@@ -75,11 +75,11 @@ Link
 [link-wiznet_ethernet_hat]: https://docs.wiznet.io/Product/Open-Source-Hardware/wiznet_ethernet_hat
 [link-wiznet_ethernet_hat_3d_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/wiznet_ethernet_hat_3d_main.png
 [link-w5100s-evb-pico]: https://docs.wiznet.io/Product/iEthernet/W5100S/w5100s-evb-pico
-[link-dhcp_dns]: https://github.com/Wiznet/pico-examples/tree/main/examples/dhcp_dns
-[link-loopback]: https://github.com/Wiznet/pico-examples/tree/main/examples/loopback
-[link-mqtt]: https://github.com/Wiznet/pico-examples/tree/main/examples/mqtt
-[link-publish]: https://github.com/Wiznet/pico-examples/tree/main/examples/mqtt/publish
-[link-subscribe]: https://github.com/Wiznet/pico-examples/tree/main/examples/mqtt/subscribe
+[link-dhcp_dns]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/dhcp_dns
+[link-loopback]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/loopback
+[link-mqtt]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/mqtt
+[link-publish]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/mqtt/publish
+[link-subscribe]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/mqtt/subscribe
 [link-sntp]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/sntp
-[link-tcp_client_over_ssl]: https://github.com/Wiznet/pico-examples/tree/main/examples/tcp_client_over_ssl
+[link-tcp_client_over_ssl]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/tcp_client_over_ssl
 [link-ioLibrary_driver]: https://github.com/Wiznet/ioLibrary_Driver
