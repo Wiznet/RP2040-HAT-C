@@ -18,9 +18,9 @@ target_include_directories(ETHERNET_FILES PUBLIC
 
 target_link_libraries(ETHERNET_FILES PUBLIC
         pico_stdlib
-#	W5100_FILES
+#       W5100_FILES
         W5100S_FILES
-#	W5200_FILES
-#	W5300_FILES
-#	W5500_FILES
+#       W5200_FILES
+#       W5300_FILES
+#       W5500_FILES
         )

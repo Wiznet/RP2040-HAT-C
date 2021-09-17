@@ -31,9 +31,11 @@ The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** ethe
 
 - [**WIZnet Ethernet HAT**][link-wiznet_ethernet_hat]
 
-![][link-wiznet_ethernet_hat_3d_main]
+![][link-wiznet_ethernet_hat_main]
 
 - [**W5100S-EVB-Pico**][link-w5100s-evb-pico]
+
+![][link-w5100s-evb-pico_3d_main]
 
 
 
@@ -73,8 +75,9 @@ Link
 [link-raspberry_pi_pico]: https://www.raspberrypi.org/products/raspberry-pi-pico/
 [link-raspberry_pi_pico_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/raspberry_pi_pico_main.png
 [link-wiznet_ethernet_hat]: https://docs.wiznet.io/Product/Open-Source-Hardware/wiznet_ethernet_hat
-[link-wiznet_ethernet_hat_3d_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/wiznet_ethernet_hat_3d_main.png
+[link-wiznet_ethernet_hat_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/wiznet_ethernet_hat_main.png
 [link-w5100s-evb-pico]: https://docs.wiznet.io/Product/iEthernet/W5100S/w5100s-evb-pico
+[link-w5100s-evb-pico_3d_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/w5100s-evb-pico_3d_main.png
 [link-dhcp_dns]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/dhcp_dns
 [link-loopback]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/loopback
 [link-mqtt]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/mqtt
