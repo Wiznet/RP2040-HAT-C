@@ -76,7 +76,7 @@ In the TCP client over SSL configuration, the target IP is the IP of your deskto
 /* Port */
 #define PORT_SSL 443
 
-static uint8_t g_target_ip[4] = {192, 168, 11, 3};
+static uint8_t g_ssl_target_ip[4] = {192, 168, 11, 3};
 ```
 
 In order to change SSL settings, modify 'ssl_config.h' located in the same directory with TCP Client over SSL example.
@@ -148,6 +148,7 @@ s_server -accept 443 -cert server.crt -key server.key
 ## Appendix
 
 - mbedTLS library was ported to use SSL, please refer to following link to find version of ported mbed TLS.
+
 	- [**mbed TLS**][link-mbed_tls]
 
 - When porting other version of the mbed TLS, the mbed TLS is in test mode by default, so you must turn off test mode in 'CMakeLists.txt' in 'mbedtls/' directory.

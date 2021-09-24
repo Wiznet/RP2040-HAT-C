@@ -183,8 +183,6 @@ int main()
 
     add_repeating_timer_us(-1000, repeating_timer_callback, NULL, &g_timer);
 
-    DNS_init(SOCKET_DNS, g_ethernet_buf);
-
     if (g_net_info.dhcp == NETINFO_DHCP) // DHCP
     {
         wizchip_dhcp_init();
@@ -196,6 +194,8 @@ int main()
         /* Get network information */
         print_network_information();
     }
+
+    DNS_init(SOCKET_DNS, g_ethernet_buf);
 
     /* Infinite loop */
     while (1)
@@ -246,8 +246,8 @@ int main()
                 if (DNS_run(g_net_info.dns, g_dns_target_domain, g_dns_target_ip) > 0)
                 {
                     printf(" DNS success\n");
-                    printf(" DNS target domain : %s\n", g_dns_target_domain);
-                    printf(" DNS IP of target domain : %d.%d.%d.%d\n", g_dns_target_ip[0], g_dns_target_ip[1], g_dns_target_ip[2], g_dns_target_ip[3]);
+                    printf(" Target domain : %s\n", g_dns_target_domain);
+                    printf(" IP of target domain : %d.%d.%d.%d\n", g_dns_target_ip[0], g_dns_target_ip[1], g_dns_target_ip[2], g_dns_target_ip[3]);
 
                     g_dns_get_ip_flag = 1;
 
@@ -257,7 +257,10 @@ int main()
                 {
                     dns_retry++;
 
-                    printf(" DNS retry after 1 second\n");
+                    if (dns_retry <= DNS_RETRY_COUNT)
+                    {
+                        printf(" DNS timeout occurred and retry %d\n", dns_retry);
+                    }
                 }
 
                 if (dns_retry > DNS_RETRY_COUNT)

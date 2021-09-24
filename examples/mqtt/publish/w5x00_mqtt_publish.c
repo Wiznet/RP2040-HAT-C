@@ -83,7 +83,7 @@ static wiz_NetInfo g_net_info =
 static uint8_t g_mqtt_send_buf[ETHERNET_BUF_MAX_SIZE] = {
 	0,
 };
-static uint8_t g_mqtt_read_buf[ETHERNET_BUF_MAX_SIZE] = {
+static uint8_t g_mqtt_recv_buf[ETHERNET_BUF_MAX_SIZE] = {
 	0,
 };
 static uint8_t g_mqtt_broker_ip[4] = {192, 168, 11, 3};
@@ -195,7 +195,7 @@ int main()
 	}
 
 	/* Initialize MQTT client */
-	MQTTClientInit(&g_mqtt_client, &g_mqtt_network, DEFAULT_TIMEOUT, g_mqtt_send_buf, ETHERNET_BUF_MAX_SIZE, g_mqtt_read_buf, ETHERNET_BUF_MAX_SIZE);
+	MQTTClientInit(&g_mqtt_client, &g_mqtt_network, DEFAULT_TIMEOUT, g_mqtt_send_buf, ETHERNET_BUF_MAX_SIZE, g_mqtt_recv_buf, ETHERNET_BUF_MAX_SIZE);
 
 	/* Connect to the MQTT broker */
 	g_mqtt_packet_connect_data.MQTTVersion = 3;

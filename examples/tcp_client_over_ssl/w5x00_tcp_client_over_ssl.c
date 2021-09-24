@@ -80,7 +80,7 @@ static wiz_NetInfo g_net_info =
 static uint8_t g_ssl_buf[ETHERNET_BUF_MAX_SIZE] = {
     0,
 };
-static uint8_t g_target_ip[4] = {192, 168, 11, 3};
+static uint8_t g_ssl_target_ip[4] = {192, 168, 11, 3};
 
 static mbedtls_ctr_drbg_context g_ctr_drbg;
 static mbedtls_ssl_context g_ssl;
@@ -203,6 +203,7 @@ int main()
             ;
     }
 
+    /* Get ciphersuite information */
     printf(" Supported ciphersuite lists\n");
 
     list = mbedtls_ssl_list_ciphersuites();
@@ -227,7 +228,7 @@ int main()
 
     if (retval != SOCKET_SSL)
     {
-        printf(" Socket %d\n", retval);
+        printf(" Socket failed %d\n", retval);
 
         while (1)
             ;
@@ -237,9 +238,7 @@ int main()
 
     do
     {
-        retval = connect((uint8_t)(g_ssl.p_bio), g_target_ip, PORT_SSL);
-
-        printf(" Connect %d\n", retval);
+        retval = connect((uint8_t)(g_ssl.p_bio), g_ssl_target_ip, PORT_SSL);
 
         if ((retval == SOCK_OK) || (retval == SOCKERR_TIMEOUT))
         {
@@ -254,6 +253,8 @@ int main()
         while (1)
             ;
     }
+
+    printf(" Connected %d\n", retval);
 
     while ((retval = mbedtls_ssl_handshake(&g_ssl)) != 0)
     {
@@ -270,6 +271,7 @@ int main()
 
     memset(g_ssl_buf, 0x00, ETHERNET_BUF_MAX_SIZE);
     strcpy(g_ssl_buf, " W5x00 TCP over SSL test\n");
+
     mbedtls_ssl_write(&g_ssl, g_ssl_buf, strlen(g_ssl_buf));
 
     /* Infinite loop */
@@ -285,6 +287,7 @@ int main()
             }
 
             memset(g_ssl_buf, 0x00, ETHERNET_BUF_MAX_SIZE);
+
             mbedtls_ssl_read(&g_ssl, g_ssl_buf, len);
 
             printf("%s", g_ssl_buf);

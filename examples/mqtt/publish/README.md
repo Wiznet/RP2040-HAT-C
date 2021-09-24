@@ -116,7 +116,7 @@ static uint8_t g_mqtt_broker_ip[4] = {192, 168, 11, 3};
 5. Create broker using mosquitto by executing the following command. If the broker is created normally, the broker's IP is the current IP of your desktop or laptop, and the port is 1883 by default.
 
 ```cpp
-mosquitto -v
+mosquitto -c mosquitto.conf -v
 ```
 
 ![][link-create_mqtt_broker_using_mosquitto]
@@ -126,6 +126,14 @@ mosquitto -v
 7. If the MQTT publish example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico, connecting to the broker and publishing the message.
 
 ![][link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message]
+
+
+
+## Appendix
+
+- Prior to Mosquitto version 2.0 the default is to allow clients to connect without authentication. In 2.0 and up, you must choose your authentication options explicitly before clients can connect. Therefore, if you are using 2.0 and up, refer to following link to setup 'mosquitto.conf' in the directory where Mosquitto is installed.
+
+    - [**Authentication Methods**][link-authentication_methods]
 
 
 
@@ -140,3 +148,4 @@ Link
 [link-run_mosquitto]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/mqtt/publish/run_mosquitto.png
 [link-create_mqtt_broker_using_mosquitto]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/mqtt/publish/create_mqtt_broker_using_mosquitto.png
 [link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/mqtt/publish/see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message.png
+[link-authentication_methods]: https://mosquitto.org/documentation/authentication-methods/
