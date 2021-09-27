@@ -131,7 +131,7 @@ mosquitto -c mosquitto.conf -v
 
 ## Appendix
 
-- Prior to Mosquitto version 2.0 the default is to allow clients to connect without authentication. In 2.0 and up, you must choose your authentication options explicitly before clients can connect. Therefore, if you are using 2.0 and up, refer to following link to setup 'mosquitto.conf' in the directory where Mosquitto is installed.
+- In Mosquitto versions earlier than 2.0 the default is to allow clients to connect without authentication. In 2.0 and up, you must choose your authentication options explicitly before clients can connect. Therefore, if you are using version 2.0 or later, refer to following link to setup 'mosquitto.conf' in the directory where Mosquitto is installed.
 
     - [**Authentication Methods**][link-authentication_methods]
 
