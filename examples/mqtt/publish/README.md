@@ -109,11 +109,11 @@ static uint8_t g_mqtt_broker_ip[4] = {192, 168, 11, 3};
 
 ![][link-connect_to_serial_com_port]
 
-4. Run mosquitto to be used as the broker.
+4. Run Mosquitto to be used as the broker.
 
 ![][link-run_mosquitto]
 
-5. Create broker using mosquitto by executing the following command. If the broker is created normally, the broker's IP is the current IP of your desktop or laptop, and the port is 1883 by default.
+5. Create broker using Mosquitto by executing the following command. If the broker is created normally, the broker's IP is the current IP of your desktop or laptop, and the port is 1883 by default.
 
 ```cpp
 mosquitto -c mosquitto.conf -v
@@ -125,7 +125,9 @@ mosquitto -c mosquitto.conf -v
 
 7. If the MQTT publish example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico, connecting to the broker and publishing the message.
 
-![][link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message]
+![][link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message_1]
+
+![][link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message_2]
 
 
 
@@ -147,5 +149,6 @@ Link
 [link-connect_to_serial_com_port]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/mqtt/publish/connect_to_serial_com_port.png
 [link-run_mosquitto]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/mqtt/publish/run_mosquitto.png
 [link-create_mqtt_broker_using_mosquitto]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/mqtt/publish/create_mqtt_broker_using_mosquitto.png
-[link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/mqtt/publish/see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message.png
+[link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message_1]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/mqtt/publish/see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message_1.png
+[link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message_2]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/mqtt/publish/see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_publishing_message_2.png
 [link-authentication_methods]: https://mosquitto.org/documentation/authentication-methods/

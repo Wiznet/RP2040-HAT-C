@@ -137,11 +137,15 @@ s_server -accept 443 -cert server.crt -key server.key
 
 7. If the TCP client over SSL example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico, connecting to the SSL server and sending the message.
 
-![][link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message]
+![][link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_1]
+
+![][link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_2]
 
 8. Once connected if you send data to the Raspberry Pi Pico or W5100S-EVB-Pico from the SSL server, you should be able to receive the sent message on Raspberry Pi Pico or W5100S-EVB-Pico.
 
-![][link-receive_sent_message]
+![][link-receive_sent_message_1]
+
+![][link-receive_sent_message_2]
 
 
 
@@ -165,6 +169,8 @@ Link
 [link-connect_to_serial_com_port]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/connect_to_serial_com_port.png
 [link-run_openssl]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/run_openssl.png
 [link-create_ssl_server_using_openssl]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/create_ssl_server_using_openssl.png
-[link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message.png
-[link-receive_sent_message]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/receive_sent_message.png
+[link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_1]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_1.png
+[link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_2]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_2.png
+[link-receive_sent_message_1]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/receive_sent_message_1.png
+[link-receive_sent_message_2]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/receive_sent_message_2.png
 [link-mbed_tls]: https://github.com/ARMmbed/mbedtls/tree/662deb38d61bb1fc6392c55a5134d1bd1a116118

@@ -105,7 +105,9 @@ static wiz_NetInfo g_net_info =
 
 6. Connect to the open loopback server using Hercules TCP client. When connecting to the loopback server, you need to enter is the IP that was configured in Step 3, the port is 5000 by default.
 
-![][link-connect_to_loopback_server_using_hercules_tcp_client]
+![][link-connect_to_loopback_server_using_hercules_tcp_client_1]
+
+![][link-connect_to_loopback_server_using_hercules_tcp_client_2]
 
 7. Once connected if you send data to the loopback server, you should be able to receive back the sent message.
 
@@ -122,5 +124,6 @@ Link
 [link-raspberry_pi_pico_usb_mass_storage]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/raspberry_pi_pico_usb_mass_storage.png
 [link-connect_to_serial_com_port]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/connect_to_serial_com_port.png
 [link-see_network_information_of_raspberry_pi_pico]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/see_network_information_of_raspberry_pi_pico.png
-[link-connect_to_loopback_server_using_hercules_tcp_client]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/connect_to_loopback_server_using_hercules_tcp_client.png
+[link-connect_to_loopback_server_using_hercules_tcp_client_1]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/connect_to_loopback_server_using_hercules_tcp_client_1.png
+[link-connect_to_loopback_server_using_hercules_tcp_client_2]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/connect_to_loopback_server_using_hercules_tcp_client_2.png
 [link-receive_back_sent_message]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/receive_back_sent_message.png
