@@ -4,7 +4,7 @@
 
 ## Step 1: Prepare software
 
-The following serial terminal program is required for SNTP test, download and install from below links.
+The following serial terminal program is required for SNTP example test, download and install from below links.
 
 - [**Tera Term**][link-tera_term]
 
@@ -47,8 +47,6 @@ If you want to test with the SNTP example using SPI DMA, uncomment USE_SPI_DMA.
 /* Use SPI DMA */
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
-
-
 
 2. Setup network configuration such as IP.
 

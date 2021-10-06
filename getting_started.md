@@ -45,10 +45,12 @@ The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** ethe
 Ethernet examples are available at '**RP2040-HAT-C/examples/**' directory. As of now, following examples are provided.
 
 - [**DHCP & DNS**][link-dhcp_dns]
+- [**HTTP**][link-http]
+	- [**Server**][link-http_server]
 - [**Loopback**][link-loopback]
 - [**MQTT**][link-mqtt]
-	- [**Publish**][link-publish]
-	- [**Subscribe**][link-subscribe]
+	- [**Publish**][link-mqtt_publish]
+	- [**Subscribe**][link-mqtt_subscribe]
 - [**SNTP**][link-sntp]
 - [**TCP Client over SSL**][link-tcp_client_over_ssl]
 
@@ -79,10 +81,12 @@ Link
 [link-w5100s-evb-pico]: https://docs.wiznet.io/Product/iEthernet/W5100S/w5100s-evb-pico
 [link-w5100s-evb-pico_3d_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/w5100s-evb-pico_3d_main.png
 [link-dhcp_dns]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/dhcp_dns
+[link-http]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/http
+[link-http_server]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/http/server
 [link-loopback]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/loopback
 [link-mqtt]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/mqtt
-[link-publish]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/mqtt/publish
-[link-subscribe]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/mqtt/subscribe
+[link-mqtt_publish]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/mqtt/publish
+[link-mqtt_subscribe]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/mqtt/subscribe
 [link-sntp]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/sntp
 [link-tcp_client_over_ssl]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/tcp_client_over_ssl
 [link-ioLibrary_driver]: https://github.com/Wiznet/ioLibrary_Driver

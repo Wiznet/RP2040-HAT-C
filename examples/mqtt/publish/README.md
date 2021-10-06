@@ -4,7 +4,7 @@
 
 ## Step 1: Prepare software
 
-The following serial terminal program and MQTT broker are required for MQTT publish test, download and install from below links.
+The following serial terminal program and MQTT broker are required for MQTT publish example test, download and install from below links.
 
 - [**Tera Term**][link-tera_term]
 - [**Mosquitto**][link-mosquitto]
@@ -48,8 +48,6 @@ If you want to test with the MQTT publish example using SPI DMA, uncomment USE_S
 /* Use SPI DMA */
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
-
-
 
 2. Setup network configuration such as IP.
 

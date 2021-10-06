@@ -4,7 +4,7 @@
 
 ## Step 1: Prepare software
 
-The following serial terminal program and SSL server are required for TCP client over SSL test, download and install from below links.
+The following serial terminal program and SSL server are required for TCP client over SSL example test, download and install from below links.
 
 - [**Tera Term**][link-tera_term]
 - [**OpenSSL**][link-openssl]
@@ -48,8 +48,6 @@ If you want to test with the TCP client over SSL example using SPI DMA, uncommen
 /* Use SPI DMA */
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
-
-
 
 2. Setup network configuration such as IP.
 

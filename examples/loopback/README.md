@@ -4,7 +4,7 @@
 
 ## Step 1: Prepare software
 
-The following serial terminal program is required for loopback test, download and install from below links.
+The following serial terminal program is required for loopback example test, download and install from below links.
 
 - [**Tera Term**][link-tera_term]
 - [**Hercules**][link-hercules]
@@ -48,8 +48,6 @@ If you want to test with the loopback example using SPI DMA, uncomment USE_SPI_D
 /* Use SPI DMA */
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
-
-
 
 2. Setup network configuration such as IP.
 
@@ -101,7 +99,7 @@ static wiz_NetInfo g_net_info =
 
 5. If the loopback example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico and the loopback server is open.
 
-![][link-see_network_information_of_raspberry_pi_pico]
+![][link-see_network_information_of_raspberry_pi_pico_and_open_loopback_server]
 
 6. Connect to the open loopback server using Hercules TCP client. When connecting to the loopback server, you need to enter is the IP that was configured in Step 3, the port is 5000 by default.
 
@@ -123,7 +121,7 @@ Link
 [link-hercules]: https://www.hw-group.com/software/hercules-setup-utility
 [link-raspberry_pi_pico_usb_mass_storage]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/raspberry_pi_pico_usb_mass_storage.png
 [link-connect_to_serial_com_port]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/connect_to_serial_com_port.png
-[link-see_network_information_of_raspberry_pi_pico]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/see_network_information_of_raspberry_pi_pico.png
+[link-see_network_information_of_raspberry_pi_pico_and_open_loopback_server]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/see_network_information_of_raspberry_pi_pico_and_open_loopback_server.png
 [link-connect_to_loopback_server_using_hercules_tcp_client_1]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/connect_to_loopback_server_using_hercules_tcp_client_1.png
 [link-connect_to_loopback_server_using_hercules_tcp_client_2]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/connect_to_loopback_server_using_hercules_tcp_client_2.png
 [link-receive_back_sent_message]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/receive_back_sent_message.png
