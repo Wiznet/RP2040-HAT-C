@@ -11,8 +11,11 @@ extern "C" {
 #include <string.h>
 #include <limits.h>
 #include <stdarg.h>
-#include "stdio_private.h"
+#include <stdlib.h>
 #include "socket.h"
+
+/* If you need this header, use it. */
+//#include "stdio_private.h"
 
 #define F_APP_FTPC
 

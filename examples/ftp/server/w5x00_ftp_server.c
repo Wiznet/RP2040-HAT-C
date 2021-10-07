@@ -16,17 +16,20 @@
 #include "pico/critical_section.h"
 #include "hardware/spi.h"
 #include "hardware/dma.h"
+#include "hardware/clocks.h"
 
 #include "wizchip_conf.h"
 
-#include "httpServer.h"
-#include "web_page.h"
+#include "ftpd.h"
 
 /**
   * ----------------------------------------------------------------------------------------------------
   * Macros
   * ----------------------------------------------------------------------------------------------------
   */
+/* Clock */
+#define PLL_SYS_KHZ (133 * 1000)
+
 /* SPI */
 #define SPI_PORT spi0
 
@@ -38,9 +41,6 @@
 
 /* Buffer */
 #define ETHERNET_BUF_MAX_SIZE (1024 * 2)
-
-/* Socket */
-#define HTTP_SOCKET_MAX_NUM 4
 
 /* Use SPI DMA */
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
@@ -64,14 +64,10 @@ static wiz_NetInfo g_net_info =
         .dhcp = NETINFO_STATIC                       // DHCP enable/disable
 };
 
-/* HTTP */
-static uint8_t g_http_send_buf[ETHERNET_BUF_MAX_SIZE] = {
+/* FTP */
+static uint8_t g_ftp_buf[ETHERNET_BUF_MAX_SIZE] = {
     0,
 };
-static uint8_t g_http_recv_buf[ETHERNET_BUF_MAX_SIZE] = {
-    0,
-};
-static uint8_t g_http_socket_num_list[HTTP_SOCKET_MAX_NUM] = {0, 1, 2, 3};
 
 #ifdef USE_SPI_DMA
 static uint dma_tx;
@@ -112,12 +108,24 @@ static void print_network_information(void);
 int main()
 {
     /* Initialize */
-    uint8_t i = 0;
+    uint8_t retval = 0;
+
+    // set a system clock frequency in khz
+    set_sys_clock_khz(PLL_SYS_KHZ, true);
+
+    // configure the specified clock
+    clock_configure(
+        clk_peri,
+        0,                                                // No glitchless mux
+        CLOCKS_CLK_PERI_CTRL_AUXSRC_VALUE_CLKSRC_PLL_SYS, // System PLL on AUX mux
+        PLL_SYS_KHZ * 1000,                               // Input frequency
+        PLL_SYS_KHZ * 1000                                // Output (must be same as no divider)
+    );
 
     stdio_init_all();
 
-    // this example will use SPI0 at 5MHz
-    spi_init(SPI_PORT, 5000 * 1000);
+    // this example will use SPI0 at 25MHz
+    spi_init(SPI_PORT, 2500 * 1000 * 10);
 
     critical_section_init(&g_wizchip_cri_sec);
 
@@ -160,21 +168,21 @@ int main()
 
     network_initialize();
 
-    httpServer_init(g_http_send_buf, g_http_recv_buf, HTTP_SOCKET_MAX_NUM, g_http_socket_num_list);
+    ftpd_init(g_net_info.ip);
 
     /* Get network information */
     print_network_information();
 
-    /* Register web page */
-    reg_httpServer_webContent("index.html", index_page);
-
     /* Infinite loop */
     while (1)
     {
-        /* Run HTTP server */
-        for (i = 0; i < HTTP_SOCKET_MAX_NUM; i++)
+        /* Run FTP server */
+        if ((retval = ftpd_run(g_ftp_buf)) < 0)
         {
-            httpServer_run(i);
+            printf(" FTP server error : %d\n", retval);
+
+            while (1)
+                ;
         }
     }
 }
@@ -323,25 +331,14 @@ static void wizchip_initialize(void)
 
 static void wizchip_check(void)
 {
-#if (_WIZCHIP_ == W5100S)
     /* Read version register */
-    if (getVER() != 0x51)
+    if (getVER() != 0x51) // W5100S
     {
         printf(" ACCESS ERR : VERSIONR != 0x51, read value = 0x%02x\n", getVER());
 
         while (1)
             ;
     }
-#elif (_WIZCHIP_ == W5500)
-    /* Read version register */
-    if (getVERSIONR() != 0x04)
-    {
-        printf(" ACCESS ERR : VERSIONR != 0x04, read value = 0x%02x\n", getVERSIONR());
-
-        while (1)
-            ;
-    }
-#endif
 }
 
 /* Network */

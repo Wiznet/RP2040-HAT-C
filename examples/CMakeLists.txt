@@ -1,4 +1,5 @@
 add_subdirectory(dhcp_dns)
+add_subdirectory(ftp)
 add_subdirectory(http)
 add_subdirectory(loopback)
 add_subdirectory(mqtt)

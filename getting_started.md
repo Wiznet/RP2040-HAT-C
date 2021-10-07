@@ -35,7 +35,7 @@ The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** ethe
 
 - [**W5100S-EVB-Pico**][link-w5100s-evb-pico]
 
-![][link-w5100s-evb-pico_3d_main]
+![][link-w5100s-evb-pico_main]
 
 
 
@@ -45,6 +45,9 @@ The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** ethe
 Ethernet examples are available at '**RP2040-HAT-C/examples/**' directory. As of now, following examples are provided.
 
 - [**DHCP & DNS**][link-dhcp_dns]
+- [**FTP**][link-ftp]
+	- [**Client**][link-ftp_client]
+	- [**Server**][link-ftp_server]
 - [**HTTP**][link-http]
 	- [**Server**][link-http_server]
 - [**Loopback**][link-loopback]
@@ -79,8 +82,11 @@ Link
 [link-wiznet_ethernet_hat]: https://docs.wiznet.io/Product/Open-Source-Hardware/wiznet_ethernet_hat
 [link-wiznet_ethernet_hat_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/wiznet_ethernet_hat_main.png
 [link-w5100s-evb-pico]: https://docs.wiznet.io/Product/iEthernet/W5100S/w5100s-evb-pico
-[link-w5100s-evb-pico_3d_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/w5100s-evb-pico_3d_main.png
+[link-w5100s-evb-pico_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/w5100s-evb-pico_main.png
 [link-dhcp_dns]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/dhcp_dns
+[link-ftp]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/ftp
+[link-ftp_client]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/ftp/client
+[link-ftp_server]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/ftp/server
 [link-http]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/http
 [link-http_server]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/http/server
 [link-loopback]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/loopback

@@ -15,9 +15,12 @@
 #include <string.h>
 #include <limits.h>
 #include <stdarg.h>
-#include "stdio_private.h"
+#include <stdlib.h>
 #include "socket.h"
 #include "ftpd.h"
+
+/* If you need this header, use it. */
+//#include "stdio_private.h"
 
 /* Command table */
 static char *commands[] = {
@@ -930,7 +933,7 @@ int pport(char * arg)
 	{
 		if(i==0) tok = strtok(arg,",\r\n");
 		else	 tok = strtok(NULL,",");
-		remote_ip.cVal[i] = (uint8_t)atoi(tok, 10);
+		remote_ip.cVal[i] = (uint8_t)atoi(tok);
 		if (!tok)
 		{
 #if defined(_FTP_DEBUG_)
@@ -944,7 +947,7 @@ int pport(char * arg)
 	{
 		tok = strtok(NULL,",\r\n");
 		remote_port <<= 8;
-		remote_port += atoi(tok, 10);
+		remote_port += atoi(tok);
 		if (!tok)
 		{
 #if defined(_FTP_DEBUG_)

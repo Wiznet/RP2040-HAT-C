@@ -553,7 +553,7 @@ int pportc(char * arg)
 	{
 		if(i==0) tok = strtok(NULL,",\r\n");
 		else	 tok = strtok(NULL,",");
-		remote_ip.cVal[i] = (uint8_t)atoi(tok, 10);
+		remote_ip.cVal[i] = (uint8_t)atoi(tok);
 		if (!tok){
 			printf("bad pport : %s\r\n", arg);
 			return -1;
@@ -563,7 +563,7 @@ int pportc(char * arg)
 	for (i = 0; i < 2; i++){
 		tok = strtok(NULL,",\r\n");
 		remote_port <<= 8;
-		remote_port += atoi(tok, 10);
+		remote_port += atoi(tok);
 		if (!tok){
 			printf("bad pport : %s\r\n", arg);
 			return -1;
