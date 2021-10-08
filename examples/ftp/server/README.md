@@ -100,7 +100,7 @@ static wiz_NetInfo g_net_info =
 
 7. Connect to the open FTP server using WinSCP. When connecting to the FTP server, you need to select FTP from the 'File protocol' session and enter is the IP that was configured in Step 3, the port is 21 by default. After completing the setup, click the 'Login' button.
 
-![][link-enter_ftp_server_ip_host_name_and_port]
+![][link-enter_ftp_server_ip_or_host_name_and_port]
 
 8. Click the 'OK' button without entering the user name and password.
 
@@ -138,7 +138,7 @@ Link
 [link-connect_to_serial_com_port]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/server/connect_to_serial_com_port.png
 [link-see_network_information_of_raspberry_pi_pico_and_open_ftp_server]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/server/see_network_information_of_raspberry_pi_pico_and_open_ftp_server.png
 [link-run_winscp]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/server/run_winscp.png
-[link-enter_ftp_server_ip_host_name_and_port]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/server/enter_ftp_server_ip_host_name_and_port.png
+[link-enter_ftp_server_ip_or_host_name_and_port]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/server/enter_ftp_server_ip_or_host_name_and_port.png
 [link-enter_user_name]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/server/enter_user_name.png
 [link-enter_password]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/server/enter_password.png
 [link-connect_to_ftp_server_1]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/server/connect_to_ftp_server_1.png
