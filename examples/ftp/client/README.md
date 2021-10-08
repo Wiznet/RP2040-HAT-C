@@ -124,23 +124,23 @@ uint16_t FTP_destport = 21;						// For FTP client examples; destination network
 
 ![][link-see_network_information_of_raspberry_pi_pico]
 
-6. Input the user ID(You created in step 4.)
+6. Input the user ID.(You created in step 4.)
 
 ![][link-input_user_id]
 
-7. Input the password
+7. Input the password.
 
 ![][link-input_password]
 
-8. Press number '1'
+8. Press number '1'.
 
 ![][link-press_num1]
 
-9. You can see FTP server directory
+9. You can see FTP server directory.
 
 ![][link-ftp_server_directory]
 
-10. Wireshark packet capture
+10. Wireshark packet capture.
 
 ![][link-ftp_wireshark_result]
 
@@ -150,7 +150,7 @@ Link
 
 [link-tera_term]: https://osdn.net/projects/ttssh2/releases/
 [link-hercules]: https://www.hw-group.com/software/hercules-setup-utility
-[link-filezilla]: https://osdn.net/projects/filezilla/downloads/67734/FileZilla_Server-0_9_60.exe/
+[link-filezilla_server]: https://osdn.net/projects/filezilla/downloads/67734/FileZilla_Server-0_9_60.exe/
 
 
 [link-filezilla_server_program_open]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/filezilla_server_program_open.png
