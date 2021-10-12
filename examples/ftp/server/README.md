@@ -13,9 +13,9 @@ The following serial terminal program and FTP client are required for FTP server
 
 ## Step 2: Prepare hardware
 
-If you use W5100S-EVB-Pico, you can skip '1. Combine...'
+If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
-1. Combine WIZnet Ethernet HAT with Raspberry Pi Pico.
+1. Mount WIZnet Ethernet HAT with Raspberry Pi Pico.
 
 2. Connect ethernet cable to WIZnet Ethernet HAT or W5100S-EVB-Pico ethernet port.
 
@@ -98,29 +98,29 @@ static wiz_NetInfo g_net_info =
 
 ![][link-run_winscp]
 
-7. Connect to the open FTP server using WinSCP. When connecting to the FTP server, you need to select FTP from the 'File protocol' session and enter is the IP that was configured in Step 3, the port is 21 by default. After completing the setup, click the 'Login' button.
+7. Connect to the open FTP server using WinSCP. When connecting to the FTP server, you need to select FTP from the 'File protocol' session and enter IP that was configured in Step 3, the port is 21 by default. After completing the setup, click the 'Login' button.
 
 ![][link-enter_ftp_server_ip_or_host_name_and_port]
 
-8. Click the 'OK' button without entering the user name and password.
+8. Click 'OK' button without entering the user name and password.
 
 ![][link-enter_user_name]
 
 ![][link-enter_password]
 
-9. When all settings are completed, you can see that connecting to the FTP server.
+9. After all actions are completed, you shoud be able to connect to FTP server.
 
 ![][link-connect_to_ftp_server_1]
 
 ![][link-connect_to_ftp_server_2]
 
-10. If you download the file in the FTP server to the FTP client, you can see that the file is downloaded.
+10. Let's try to download file from FTP server to FTP client, you should be able to get results similar to below.
 
 ![][link-download_selected_remote_file_to_local_directory_1]
 
 ![][link-download_selected_remote_file_to_local_directory_2]
 
-11. If you upload the file in the FTP client to the FTP server, you can see the contents of the uploaded file are output.
+11. Now, let's try to upload file from FTP client to FTP server, you should be able to see the contents of the uploaded file printed in terminal.
 
 ![][link-upload_selected_local_file_to_remote_directory_1]
 
