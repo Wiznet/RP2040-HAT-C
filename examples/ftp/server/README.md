@@ -15,7 +15,7 @@ The following serial terminal program and FTP client are required for FTP server
 
 If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
-1. Mount WIZnet Ethernet HAT with Raspberry Pi Pico.
+1. Combine WIZnet Ethernet HAT with Raspberry Pi Pico.
 
 2. Connect ethernet cable to WIZnet Ethernet HAT or W5100S-EVB-Pico ethernet port.
 

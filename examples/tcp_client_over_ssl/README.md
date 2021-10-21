@@ -13,7 +13,7 @@ The following serial terminal program and SSL server are required for TCP client
 
 ## Step 2: Prepare hardware
 
-If you use W5100S-EVB-Pico, you can skip '1. Combine...'
+If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 1. Combine WIZnet Ethernet HAT with Raspberry Pi Pico.
 

@@ -12,7 +12,7 @@ The following serial terminal program is required for DHCP & DNS example test, d
 
 ## Step 2: Prepare hardware
 
-If you use W5100S-EVB-Pico, you can skip '1. Combine...'
+If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 1. Combine WIZnet Ethernet HAT with Raspberry Pi Pico.
 

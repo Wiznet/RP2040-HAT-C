@@ -6,12 +6,9 @@ option(LINK_WITH_TRUSTED_STORAGE "Explicitly link mbed TLS library to trusted_st
 # Set the project root directory if it's not already defined, as may happen if
 # the library folder is included directly by a parent project, without
 # including the top level CMakeLists.txt.
-
 if(NOT DEFINED MBEDTLS_DIR)
     set(MBEDTLS_DIR ${CMAKE_SOURCE_DIR})
 endif()
-
-MESSAGE ( "MBEDTLS_DIR = " ${MBEDTLS_DIR} )
 
 set(src_crypto
     aes.c
@@ -184,17 +181,14 @@ if(USE_STATIC_MBEDTLS_LIBRARY)
     add_library(${mbedcrypto_static_target} STATIC ${src_crypto})
     set_target_properties(${mbedcrypto_static_target} PROPERTIES OUTPUT_NAME mbedcrypto)
     target_link_libraries(${mbedcrypto_static_target} PUBLIC ${libs})
-    #target_include_directories (${mbedcrypto_static_target} INTERFACE ../../../SSLTLS)
 
     add_library(${mbedx509_static_target} STATIC ${src_x509})
     set_target_properties(${mbedx509_static_target} PROPERTIES OUTPUT_NAME mbedx509)
     target_link_libraries(${mbedx509_static_target} PUBLIC ${libs} ${mbedcrypto_static_target})
-    #target_include_directories (${mbedx509_static_target} INTERFACE ../../../SSLTLS)
 
     add_library(${mbedtls_static_target} STATIC ${src_tls})
     set_target_properties(${mbedtls_static_target} PROPERTIES OUTPUT_NAME mbedtls)
     target_link_libraries(${mbedtls_static_target} PUBLIC ${libs} ${mbedx509_static_target})
-    #target_include_directories (${mbedtls_static_target} INTERFACE ../../../SSLTLS)
 endif(USE_STATIC_MBEDTLS_LIBRARY)
 
 if(USE_SHARED_MBEDTLS_LIBRARY)
@@ -221,8 +215,7 @@ foreach(target IN LISTS target_libraries)
         PUBLIC ${MBEDTLS_DIR}/include/
         PUBLIC ${thirdparty_inc_public}
         PRIVATE ${MBEDTLS_DIR}/library/
-        PRIVATE ${thirdparty_inc}
-        PUBLIC ${MBEDTLS_DIR}../../SSLTLS/)
+        PRIVATE ${thirdparty_inc})
     target_compile_definitions(${target}
         PRIVATE ${thirdparty_def})
     install(TARGETS ${target}
@@ -236,5 +229,3 @@ add_custom_target(${lib_target} DEPENDS ${mbedcrypto_target} ${mbedx509_target} 
 if(USE_STATIC_MBEDTLS_LIBRARY AND USE_SHARED_MBEDTLS_LIBRARY)
     add_dependencies(${lib_target} ${mbedcrypto_static_target} ${mbedx509_static_target} ${mbedtls_static_target})
 endif()
-
-

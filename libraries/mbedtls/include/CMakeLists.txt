@@ -4,7 +4,6 @@ if(INSTALL_MBEDTLS_HEADERS)
 
     file(GLOB headers "mbedtls/*.h")
     file(GLOB psa_headers "psa/*.h")
-    file(GLOB config_headers "../../SSLConfig.h")
 
     install(FILES ${headers}
         DESTINATION include/mbedtls
@@ -12,10 +11,6 @@ if(INSTALL_MBEDTLS_HEADERS)
 
     install(FILES ${psa_headers}
         DESTINATION include/psa
-        PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
-    
-    install(FILES ${config_headers}
-        DESTINATION ../../
         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
 
 endif(INSTALL_MBEDTLS_HEADERS)
@@ -25,5 +20,3 @@ if (ENABLE_TESTING AND NOT ${CMAKE_CURRENT_BINARY_DIR} STREQUAL ${CMAKE_CURRENT_
     link_to_source(mbedtls)
     link_to_source(psa)
 endif()
-
-#include_directories (../../../SSLTLS)
