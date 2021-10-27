@@ -51,7 +51,7 @@ endforeach()
 message("submodules mbedtls initialised")
 
 file(GLOB MBEDTLS_PATCHES 
-	"${RP2040_HAT_C_PATCH_DIR}/03_mbedtls.patch"
+	"${RP2040_HAT_C_PATCH_DIR}/03_mbedtls_test_mode.patch"
 	)
 
 foreach(MBEDTLS_PATCH IN LISTS MBEDTLS_PATCHES)
