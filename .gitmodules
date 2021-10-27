@@ -1,3 +1,6 @@
 [submodule "libraries/ioLibrary_Driver"]
 	path = libraries/ioLibrary_Driver
 	url = https://github.com/Wiznet/ioLibrary_Driver.git
+[submodule "libraries/mbedtls"]
+	path = libraries/mbedtls
+	url = https://github.com/ARMmbed/mbedtls.git
