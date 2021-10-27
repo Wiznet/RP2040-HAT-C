@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 
 # Pull in SDK (must be before project)
 include(pico_sdk_import.cmake)
-include(iolibrary_driver-patch.cmake)
+include(rp2040_hat_c-patch.cmake)
 
 # Set project name
 set(PROJECT_NAME RP2040-HAT-C)

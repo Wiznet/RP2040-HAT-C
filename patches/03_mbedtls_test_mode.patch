@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ac24bf41b..ffa9af3d3 100644
+index ac24bf41b..c22fb44dd 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -33,7 +33,7 @@ set(MBEDTLS_DIR ${CMAKE_CURRENT_SOURCE_DIR})
@@ -35,4 +35,3 @@ index ac24bf41b..ffa9af3d3 100644
      endif()
  endif()
 +endif()
-\ No newline at end of file
