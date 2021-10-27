@@ -57,7 +57,7 @@ file(GLOB MBEDTLS_PATCHES
 foreach(MBEDTLS_PATCH IN LISTS MBEDTLS_PATCHES)
 	message("Running patch ${MBEDTLS_PATCH}")
 	execute_process(
-		COMMAND ${GIT_EXECUTABLE} apply ${MBEDTLS_PATCH}
+		COMMAND ${GIT_EXECUTABLE} apply --ignore-whitespace ${MBEDTLS_PATCH}
 		WORKING_DIRECTORY ${MBEDTLS_SRC_DIR}
 	)
 endforeach()
