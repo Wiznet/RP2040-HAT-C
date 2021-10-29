@@ -18,7 +18,7 @@ The ethernet examples were tested by configuring the development environment for
 
 - [**Getting started with Raspberry Pi Pico**][link-getting_started_with_raspberry_pi_pico]
 
-And the ethernet examples were developed using Visual Studio Code, and the guide document for each ethernet example  was written based on Visual Studio Code, so please refer to it.
+And the ethernet examples were developed using **Visual Studio Code**, and the guide document for each ethernet example  was written based on Visual Studio Code, so please refer to it.
 
 
 
@@ -80,7 +80,7 @@ With Visual Studio Code, the library set as a submodule is automatically downloa
 
 2. Patch
 
-With Visual Studio Code, each library set as a submodule is automatically patched, but if you do not use Visual Studio Code, each library set as a submodule must be manually patched with the commands below in each library directory.
+With Visual Studio Code, each library set as a submodule is automatically patched, but if you do not use Visual Studio Code, each library set as a submodule must be manually patched with the Git commands below in each library directory.
 
 - ioLibrary_Driver
 
