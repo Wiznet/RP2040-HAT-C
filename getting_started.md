@@ -18,6 +18,8 @@ The ethernet examples were tested by configuring the development environment for
 
 - [**Getting started with Raspberry Pi Pico**][link-getting_started_with_raspberry_pi_pico]
 
+And the ethernet examples were developed using Visual Studio Code, and the guide document for each ethernet example  was written based on Visual Studio Code, so please refer to it.
+
 
 
 <a name="hardware_requirements"></a>
@@ -65,6 +67,35 @@ Note that **ioLibrary_Driver** is needed to run ethernet examples. This library 
 
 <a name="Ethernet_example_testing"></a>
 ## Ethernet example testing
+
+1. Download
+
+If the ethernet example is cloned, the library set as a submodule is an empty directory. Therefore, if you want to download the library set as a submodule together, clone the ethernet example with the following Git command.
+
+```cpp
+git clone --recurse-submodules https://github.com/Wiznet/RP2040-HAT-C.git
+```
+
+With Visual Studio Code, the library set as a submodule is automatically downloaded, so it doesn't matter whether the library set as a submodule is an empty directory or not, so refer to it.
+
+2. Patch
+
+With Visual Studio Code, each library set as a submodule is automatically patched, but if you do not use Visual Studio Code, each library set as a submodule must be manually patched with the commands below in each library directory.
+
+- ioLibrary_Driver
+
+```cpp
+git apply ../../patches/01_ethernet_chip.patch
+git apply ../../patches/02_ftp_client.patch
+```
+
+- mbedtls
+
+```cpp
+git apply --ignore-whitespace ../../patches/03_mbedtls_test_mode.patch
+```
+
+3. Test
 
 Please refer to 'README.md' in each examples directory to find detail guide for testing ethernet examples.
 
