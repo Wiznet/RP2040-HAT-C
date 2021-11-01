@@ -1,4 +1,4 @@
-# Ethernet Example Getting Started
+# Getting Started with Ethernet Examples
 
 These sections will guide you through a series of steps from configuring development environment to running ethernet examples using the **WIZnet's ethernet products**.
 
@@ -18,14 +18,14 @@ The ethernet examples were tested by configuring the development environment for
 
 - [**Getting started with Raspberry Pi Pico**][link-getting_started_with_raspberry_pi_pico]
 
-And the ethernet examples were developed using **Visual Studio Code**, and the guide document for each ethernet example  was written based on Visual Studio Code, so please refer to it.
 
+**Visual Studio Code** was used during development and testing of ethernet examples, the guide document in each folder was prepared also base on development with VS Code. Please refer to corresponding document.
 
 
 <a name="hardware_requirements"></a>
 ## Hardware requirements
 
-The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** ethernet I/O module built on WIZnet's [**W5100S**][link-w5100s] ethernet chip or **W5100S-EVB-Pico** ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5100S**][link-w5100s] ethernet chip.
+The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** - I/O module built on WIZnet's [**W5100S**][link-w5100s] ethernet chip or **W5100S-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5100S**][link-w5100s] ethernet chip.
 
 - [**Raspberry Pi Pico**][link-raspberry_pi_pico]
 
@@ -44,7 +44,7 @@ The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** ethe
 <a name="ethernet_example_structure"></a>
 ## Ethernet example structure
 
-Ethernet examples are available at '**RP2040-HAT-C/examples/**' directory. As of now, following examples are provided.
+Examples are available at '**RP2040-HAT-C/examples/**' directory. As of now, following examples are provided.
 
 - [**DHCP & DNS**][link-dhcp_dns]
 - [**FTP**][link-ftp]
@@ -97,7 +97,7 @@ git apply --ignore-whitespace ../../patches/03_mbedtls_test_mode.patch
 
 3. Test
 
-Please refer to 'README.md' in each examples directory to find detail guide for testing ethernet examples.
+Please refer to 'README.md' in each example directory to find detail guide for testing ethernet examples.
 
 
 
