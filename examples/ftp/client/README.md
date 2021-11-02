@@ -1,32 +1,31 @@
-# How to Test FTP_Client Example
+# How to Test FTP Client Example
 
 
 
 ## Step 1: Prepare software
 
-The following serial terminal program is required for ftp_client test, download and install from below links.
+The following serial terminal program and FTP server are required for FTP Client example test, download and install from below links.
 
 - [**Tera Term**][link-tera_term]
-- [**Hercules**][link-hercules]
 - [**FileZilla Server Interface**][link-filezilla_server]
 
 
 
 ## Step 2: Prepare hardware
 
+If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
+
 1. Combine WIZnet Ethernet HAT with Raspberry Pi Pico.
 
-2. Connect ethernet cable to WIZnet Ethernet HAT ethernet port.
+2. Connect ethernet cable to WIZnet Ethernet HAT or W5100S-EVB-Pico ethernet port.
 
-3. Connect Raspberry Pi Pico to desktop or laptop using 5 pin micro USB cable.
-
-If you use W5100S-EVB-Pico, you can skip '1. Combine...'
+3. Connect Raspberry Pi Pico or W5100S-EVB-Pico to desktop or laptop using 5 pin micro USB cable.
 
 
 
-## Step 3: Setup FTP_Client Example
+## Step 3: Setup FTP Client Example
 
-To test the ftp_client example, minor settings shall be done in code.
+To test the FTP Client example, minor settings shall be done in code.
 
 1. Setup SPI port and pin.
 
@@ -50,8 +49,6 @@ If you want to test with the ftp_client example using SPI DMA, uncomment USE_SPI
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
 
-
-
 2. Setup network configuration such as IP.
 
 Setup IP and other network settings to suit your network environment.
@@ -61,7 +58,7 @@ Setup IP and other network settings to suit your network environment.
 static wiz_NetInfo g_net_info =
     {
         .mac = {0x00, 0x08, 0xDC, 0x12, 0x34, 0x56}, // MAC address
-        .ip = {192, 168, 1, 15},                     // IP address
+        .ip = {192, 168, 1, 2},                      // IP address
         .sn = {255, 255, 255, 0},                    // Subnet Mask
         .gw = {192, 168, 1, 1},                      // Gateway
         .dns = {8, 8, 8, 8},                         // DNS server
@@ -69,22 +66,22 @@ static wiz_NetInfo g_net_info =
 };
 ```
 
-3. Setup ftp_client configuration in ftpc.c file.(route: RP2040-HAT-C\libraries\ioLibrary_Driver\Internet\FTPClient\ftpc.c)
+3. Setup FTP client configuration in ftpc.c in 'RP2040-HAT-C/libraries/ioLibrary_Driver/Internet/FTPClient/' directory.
 
 ```cpp
-uint8_t FTP_destip[4] = {192, 168, 1, 2};		// For FTP client examples; destination network info
-uint16_t FTP_destport = 21;						// For FTP client examples; destination network info
+uint8_t FTP_destip[4] = {192, 168, 10, 230};    // For FTP client examples; destination network info
+uint16_t FTP_destport = 21;                     // For FTP client examples; destination network info
 ```
 
 
 
 ## Step 4: Setup FileZilla Server program
 
-1. Execute FileZilla Server program and open FTP server.
+1. Execute FileZilla server program and open FTP server.
 
 ![][link-filezilla_server_program_open]
 
-2. Add user and Set password
+2. Add user and set password
 
 ![][link-filezilla_add_user]
 
@@ -108,23 +105,23 @@ uint16_t FTP_destport = 21;						// For FTP client examples; destination network
 
 ## Step 6: Upload and Run
 
-1. While pressing the BOOTSEL button of Raspberry Pi Pico power on the board, the USB mass storage 'RPI-RP2' is automatically mounted.
+1. While pressing the BOOTSEL button of Raspberry Pi Pico or W5100S-EVB-Pico power on the board, the USB mass storage 'RPI-RP2' is automatically mounted.
 
 ![][link-raspberry_pi_pico_usb_mass_storage]
 
 2. Drag and drop 'w5x00_ftp_client.uf2' onto the USB mass storage device 'RPI-RP2'.
 
-3. Connect to the serial COM port of Raspberry Pi Pico with Tera Term.
+3. Connect to the serial COM port of Raspberry Pi Pico or W5100S-EVB-Pico with Tera Term.
 
 ![][link-connect_to_serial_com_port]
 
 4. Reset your board.
 
-5. If the ftp_clinet example works normally on Raspberry Pi Pico, you can see the network information of Raspberry Pi Pico and the FileZilla web site.
+5. If the FTP Clinet example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico and the FileZilla web site URL.
 
 ![][link-see_network_information_of_raspberry_pi_pico]
 
-6. Input the user ID.(You created in step 4.)
+6. Input the user ID created in step 4.
 
 ![][link-input_user_id]
 
@@ -144,6 +141,8 @@ uint16_t FTP_destport = 21;						// For FTP client examples; destination network
 
 ![][link-ftp_wireshark_result]
 
+
+
 <!--
 Link
 -->
@@ -151,15 +150,10 @@ Link
 [link-tera_term]: https://osdn.net/projects/ttssh2/releases/
 [link-hercules]: https://www.hw-group.com/software/hercules-setup-utility
 [link-filezilla_server]: https://osdn.net/projects/filezilla/downloads/67734/FileZilla_Server-0_9_60.exe/
-
-
 [link-filezilla_server_program_open]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/filezilla_server_program_open.png
 [link-filezilla_add_user]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/filezilla_add_user.png
 [link-filezilla_set_path]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/filezilla_set_path.png
 [link-filezilla_general_settings]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/filezilla_general_settings.png
-
-
-
 [link-raspberry_pi_pico_usb_mass_storage]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/raspberry_pi_pico_usb_mass_storage.png
 [link-connect_to_serial_com_port]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/serial_com_port.png
 [link-see_network_information_of_raspberry_pi_pico]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/network_information.png
@@ -168,4 +162,3 @@ Link
 [link-press_num1]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/press_num1.png
 [link-ftp_server_directory]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/ftp_server_directory.png
 [link-ftp_wireshark_result]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/ftp_wireshark_result.png
-

@@ -153,7 +153,7 @@ s_server -accept 443 -cert server.crt -key server.key
 
 	- [**mbed TLS**][link-mbed_tls]
 
-- When porting other version of the mbed TLS, the mbed TLS is in test mode by default, so you must turn off test mode in 'CMakeLists.txt' in 'mbedtls/' directory.
+- When porting other version of the mbed TLS, the mbed TLS is in test mode by default, so you must turn off test mode in 'CMakeLists.txt' in 'RP2040-HAT-C/libraries/mbedtls/' directory.
 
 
 
