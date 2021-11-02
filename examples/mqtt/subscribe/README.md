@@ -4,7 +4,7 @@
 
 ## Step 1: Prepare software
 
-The following serial terminal program and MQTT broker are required for MQTT subscribe example test, download and install from below links.
+The following serial terminal program and MQTT broker are required for MQTT Subscribe example test, download and install from below links.
 
 - [**Tera Term**][link-tera_term]
 - [**Mosquitto**][link-mosquitto]
@@ -25,7 +25,7 @@ If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 ## Step 3: Setup MQTT Subscribe Example
 
-To test the MQTT subscribe example, minor settings shall be done in code.
+To test the MQTT Subscribe example, minor settings shall be done in code.
 
 1. Setup SPI port and pin.
 
@@ -42,7 +42,7 @@ Setup the SPI interface you use.
 #define PIN_RST 20
 ```
 
-If you want to test with the MQTT subscribe example using SPI DMA, uncomment USE_SPI_DMA.
+If you want to test with the MQTT Subscribe example using SPI DMA, uncomment USE_SPI_DMA.
 
 ```cpp
 /* Use SPI DMA */
@@ -88,7 +88,7 @@ static uint8_t g_mqtt_broker_ip[4] = {192, 168, 11, 3};
 
 ## Step 4: Build
 
-1. After completing the MQTT subscribe example configuration, click 'build' in the status bar at the bottom of Visual Studio Code or press the 'F7' button on the keyboard to build.
+1. After completing the MQTT Subscribe example configuration, click 'build' in the status bar at the bottom of Visual Studio Code or press the 'F7' button on the keyboard to build.
 
 2. When the build is completed, 'w5x00_mqtt_subscribe.uf2' is generated in 'RP2040-HAT-C/build/examples/mqtt/subscribe/' directory.
 
@@ -120,7 +120,7 @@ mosquitto -c mosquitto.conf -v
 
 6. Reset your board.
 
-7. If the MQTT subscribe example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico, connecting to the broker and subscribing to the subscribe topic.
+7. If the MQTT Subscribe example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico, connecting to the broker and subscribing to the subscribe topic.
 
 ![][link-see_network_information_of_raspberry_pi_pico_connecting_to_broker_and_subscribing_to_subscribe_topic_1]
 

@@ -4,7 +4,7 @@
 
 ## Step 1: Prepare software
 
-The following serial terminal program and SSL server are required for TCP client over SSL example test, download and install from below links.
+The following serial terminal program and SSL server are required for TCP Client over SSL example test, download and install from below links.
 
 - [**Tera Term**][link-tera_term]
 - [**OpenSSL**][link-openssl]
@@ -25,7 +25,7 @@ If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 ## Step 3: Setup TCP Client over SSL Example
 
-To test the TCP client over SSL example, minor settings shall be done in code.
+To test the TCP Client over SSL example, minor settings shall be done in code.
 
 1. Setup SPI port and pin.
 
@@ -42,7 +42,7 @@ Setup the SPI interface you use.
 #define PIN_RST 20
 ```
 
-If you want to test with the TCP client over SSL example using SPI DMA, uncomment USE_SPI_DMA.
+If you want to test with the TCP Client over SSL example using SPI DMA, uncomment USE_SPI_DMA.
 
 ```cpp
 /* Use SPI DMA */
@@ -133,7 +133,7 @@ s_server -accept 443 -cert server.crt -key server.key
 
 6. Reset your board.
 
-7. If the TCP client over SSL example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico, connecting to the SSL server and sending the message.
+7. If the TCP Client over SSL example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico, connecting to the SSL server and sending the message.
 
 ![][link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_1]
 

@@ -18,14 +18,14 @@ The ethernet examples were tested by configuring the development environment for
 
 - [**Getting started with Raspberry Pi Pico**][link-getting_started_with_raspberry_pi_pico]
 
+**Visual Studio Code** was used during development and testing of ethernet examples, the guide document in each directory was prepared also base on development with Visual Studio Code. Please refer to corresponding document.
 
-**Visual Studio Code** was used during development and testing of ethernet examples, the guide document in each folder was prepared also base on development with VS Code. Please refer to corresponding document.
 
 
 <a name="hardware_requirements"></a>
 ## Hardware requirements
 
-The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** - I/O module built on WIZnet's [**W5100S**][link-w5100s] ethernet chip or **W5100S-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5100S**][link-w5100s] ethernet chip.
+The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** - ethernet I/O module built on WIZnet's [**W5100S**][link-w5100s] ethernet chip or **W5100S-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5100S**][link-w5100s] ethernet chip.
 
 - [**Raspberry Pi Pico**][link-raspberry_pi_pico]
 
@@ -70,7 +70,7 @@ Note that **ioLibrary_Driver** is needed to run ethernet examples. This library 
 
 1. Download
 
-If the ethernet example is cloned, the library set as a submodule is an empty directory. Therefore, if you want to download the library set as a submodule together, clone the ethernet example with the following Git command.
+If the ethernet examples are cloned, the library set as a submodule is an empty directory. Therefore, if you want to download the library set as a submodule together, clone the ethernet examples with the following Git command.
 
 ```cpp
 git clone --recurse-submodules https://github.com/Wiznet/RP2040-HAT-C.git

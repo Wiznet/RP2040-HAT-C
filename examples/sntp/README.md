@@ -4,7 +4,7 @@
 
 ## Step 1: Prepare software
 
-The following serial terminal program is required for SNTP example test, download and install from below links.
+The following serial terminal program is required for SNTP example test, download and install from below link.
 
 - [**Tera Term**][link-tera_term]
 

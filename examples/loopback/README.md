@@ -4,7 +4,7 @@
 
 ## Step 1: Prepare software
 
-The following serial terminal program is required for loopback example test, download and install from below links.
+The following serial terminal programs are required for Loopback example test, download and install from below links.
 
 - [**Tera Term**][link-tera_term]
 - [**Hercules**][link-hercules]
@@ -25,7 +25,7 @@ If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 ## Step 3: Setup Loopback Example
 
-To test the loopback example, minor settings shall be done in code.
+To test the Loopback example, minor settings shall be done in code.
 
 1. Setup SPI port and pin.
 
@@ -42,7 +42,7 @@ Setup the SPI interface you use.
 #define PIN_RST 20
 ```
 
-If you want to test with the loopback example using SPI DMA, uncomment USE_SPI_DMA.
+If you want to test with the Loopback example using SPI DMA, uncomment USE_SPI_DMA.
 
 ```cpp
 /* Use SPI DMA */
@@ -77,7 +77,7 @@ static wiz_NetInfo g_net_info =
 
 ## Step 4: Build
 
-1. After completing the loopback example configuration, click 'build' in the status bar at the bottom of Visual Studio Code or press the 'F7' button on the keyboard to build.
+1. After completing the Loopback example configuration, click 'build' in the status bar at the bottom of Visual Studio Code or press the 'F7' button on the keyboard to build.
 
 2. When the build is completed, 'w5x00_loopback.uf2' is generated in 'RP2040-HAT-C/build/examples/loopback/' directory.
 
@@ -97,7 +97,7 @@ static wiz_NetInfo g_net_info =
 
 4. Reset your board.
 
-5. If the loopback example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico and the loopback server is open.
+5. If the Loopback example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico and the loopback server is open.
 
 ![][link-see_network_information_of_raspberry_pi_pico_and_open_loopback_server]
 
