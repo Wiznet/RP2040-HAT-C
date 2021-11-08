@@ -121,7 +121,8 @@ genrsa -des3 -out server.key 2048
 req -new -key server.key -out server.csr
 x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 
-/* Run the SSL server */
+/* run the SSL server */
+// run SSL the server
 s_server -accept [port] -cert [crt name].crt -key [key name].key
 
 // e.g.
