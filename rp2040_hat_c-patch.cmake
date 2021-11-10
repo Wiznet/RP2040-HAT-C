@@ -35,8 +35,8 @@ execute_process(COMMAND ${GIT_EXECUTABLE} -C ${RP2040_HAT_C_SRC_DIR} submodule u
 message("submodules ioLibrary_Driver initialised")
 
 file(GLOB IOLIBRARY_DRIVER_PATCHES 
-	"${RP2040_HAT_C_PATCH_DIR}/01_ethernet_chip.patch" 
-	"${RP2040_HAT_C_PATCH_DIR}/02_ftp_client.patch"
+	"${RP2040_HAT_C_PATCH_DIR}/01_iolibrary_driver_ethernet_chip.patch" 
+	"${RP2040_HAT_C_PATCH_DIR}/02_iolibrary_driver_ftp_client.patch"
 	)
 
 foreach(IOLIBRARY_DRIVER_PATCH IN LISTS IOLIBRARY_DRIVER_PATCHES)
