@@ -16,9 +16,7 @@ The following serial terminal program and FTP server are required for FTP Client
 If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 1. Combine WIZnet Ethernet HAT with Raspberry Pi Pico.
-
 2. Connect ethernet cable to WIZnet Ethernet HAT or W5100S-EVB-Pico ethernet port.
-
 3. Connect Raspberry Pi Pico or W5100S-EVB-Pico to desktop or laptop using 5 pin micro USB cable.
 
 
@@ -27,7 +25,7 @@ If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 To test the FTP Client example, minor settings shall be done in code.
 
-1. Setup SPI port and pin.
+1. Setup SPI port and pin in 'RP2040-HAT-C/port/ioLibrary_Driver/w5x00spi.h' directory.
 
 Setup the SPI interface you use.
 
@@ -49,7 +47,7 @@ If you want to test with the ftp_client example using SPI DMA, uncomment USE_SPI
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
 
-2. Setup network configuration such as IP.
+2. Setup network configuration such as IP in 'RP2040-HAT-C/examples/ftp/client/w5x00_ftp_client.c' directory.
 
 Setup IP and other network settings to suit your network environment.
 
@@ -58,18 +56,18 @@ Setup IP and other network settings to suit your network environment.
 static wiz_NetInfo g_net_info =
     {
         .mac = {0x00, 0x08, 0xDC, 0x12, 0x34, 0x56}, // MAC address
-        .ip = {192, 168, 1, 2},                      // IP address
+        .ip = {192, 168, 11, 2},                     // IP address
         .sn = {255, 255, 255, 0},                    // Subnet Mask
-        .gw = {192, 168, 1, 1},                      // Gateway
+        .gw = {192, 168, 11, 1},                     // Gateway
         .dns = {8, 8, 8, 8},                         // DNS server
         .dhcp = NETINFO_STATIC                       // DHCP enable/disable
 };
 ```
 
-3. Setup FTP client configuration in ftpc.c in 'RP2040-HAT-C/libraries/ioLibrary_Driver/Internet/FTPClient/' directory.
+3. Setup FTP client configuration in ftpc.c in 'RP2040-HAT-C/libraries/ioLibrary_Driver/Internet/FTPClient/ftpc.c' directory.
 
 ```cpp
-uint8_t FTP_destip[4] = {192, 168, 10, 230};    // For FTP client examples; destination network info
+uint8_t FTP_destip[4] = {192, 168, 11, 230};    // For FTP client examples; destination network info
 uint16_t FTP_destport = 21;                     // For FTP client examples; destination network info
 ```
 
@@ -162,3 +160,4 @@ Link
 [link-press_num1]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/press_num1.png
 [link-ftp_server_directory]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/ftp_server_directory.png
 [link-ftp_wireshark_result]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/ftp_wireshark_result.png
+

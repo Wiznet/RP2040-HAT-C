@@ -2,17 +2,13 @@ add_executable(w5x00_tcp_client_over_ssl
 	w5x00_tcp_client_over_ssl.c
         )
 
-target_include_directories(w5x00_tcp_client_over_ssl PUBLIC
-        ${CMAKE_SOURCE_DIR}/libraries/ioLibrary_Driver/Ethernet
-        ${CMAKE_SOURCE_DIR}/libraries/mbedtls/include
-        ${CMAKE_SOURCE_DIR}/libraries/mbedtls/library
-        )
-
-target_link_libraries(w5x00_tcp_client_over_ssl PUBLIC
+target_link_libraries(w5x00_tcp_client_over_ssl PRIVATE
         pico_stdlib
         hardware_spi
         hardware_dma
         ETHERNET_FILES
+        SPI_FILES
+        TIMER_FILES        
         mbedcrypto
         mbedx509
         mbedtls

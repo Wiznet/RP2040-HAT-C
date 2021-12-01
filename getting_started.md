@@ -20,9 +20,18 @@ The ethernet examples were tested by configuring the development environment for
 
 **Visual Studio Code** was used during development and testing of ethernet examples, the guide document in each directory was prepared also base on development with Visual Studio Code. Please refer to corresponding document.
 
+- **Add Cmake Configure Environment Value**
+
+1. Open Cmake Tools Extension Settings
+2. Add Cmake: Configure Environment Item as PICO_SDK_PATH
+3. ADD Cmake: Configure Environment Valuse as 'D:/RP2040/RP2040-HAT-C/libraries/pico-sdk'
+
+![][link-cmake_configure]
+
 
 
 <a name="hardware_requirements"></a>
+
 ## Hardware requirements
 
 The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** - ethernet I/O module built on WIZnet's [**W5100S**][link-w5100s] ethernet chip or **W5100S-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5100S**][link-w5100s] ethernet chip.
@@ -59,13 +68,37 @@ Examples are available at '**RP2040-HAT-C/examples/**' directory. As of now, fol
 - [**SNTP**][link-sntp]
 - [**TCP Client over SSL**][link-tcp_client_over_ssl]
 
-Note that **ioLibrary_Driver** is needed to run ethernet examples. This library is applicable to WIZnet's W5x00 ethernet chip and is located in the '**RP2040-HAT-C/libraries/**' directory.
+Note that **ioLibrary_Driver**, **mbedtls**, **pico-sdk**, **pico-extras** are needed to run ethernet examples. 
+
+1. **ioLibrary_Driver** library is applicable to WIZnet's W5x00 ethernet chip.
+
+2. **mbedtls** library supports additional algorithms and support related to TLS and SSL connections. 
+
+3. **pico-sdk** is made available by Pico to enable developers to build software applications for the Pico Platform. 
+
+4. **pico-extras** has additional libraries that are not yet ready for inclusion the Pico SDK proper, or are just useful but don't necessarily belong in the Pico SDK.
+
+   Libraries are located in the '**RP2040-HAT-C/libraries/**' directory.
 
 - [**ioLibrary_Driver**][link-ioLibrary_driver]
+- [**mbedtls**][link-mbedtls_library]
+- [**pico-sdk**][link-pico_sdk]
+- [**pico-extras**][link-pico_extras]
 
+If you want to modify the code that MCU-dependent and use a MCU other than **RP2040**, you can modify it in the **port** directory.
 
+port is located in the '**RP2040-HAT-C/port/**' directory.
+
+- [**ioLibrary_Driver**][link-ioLibrary_driver_port]
+- [**mbedtls**][link-mbedtls_port]
+- [**timer**][link-timer_port]
+
+The structure of this **RP2040-HAT-C 2.0.0** version has changed a lot compared to the previous version. If you want to refer to the previous version, please refer to the link below.
+
+- [**RP2040-HAT-C 1.0.0 version**][link-RP2040-HAT-C_1.0.0_version]
 
 <a name="Ethernet_example_testing"></a>
+
 ## Ethernet example testing
 
 1. Download
@@ -105,20 +138,6 @@ git apply ../../patches/01_ethernet_chip.patch
 git apply ../../patches/02_ftp_client.patch
 ```
 
-- mbedtls
-
-```cpp
-/* Change directory */
-// change to the 'mbedtls' library directory
-cd [user path]/RP2040-HAT-C/libraries/mbedtls
-
-// e.g.
-cd D:/RP2040/RP2040-HAT-C/libraries/mbedtls
-
-/* Patch */
-git apply --ignore-whitespace ../../patches/03_mbedtls_test_mode.patch
-```
-
 3. Test
 
 Please refer to 'README.md' in each example directory to find detail guide for testing ethernet examples.
@@ -129,6 +148,7 @@ Please refer to 'README.md' in each example directory to find detail guide for t
 Link
 -->
 
+[link-cmake_configure]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/cmake_configure.png
 [link-getting_started_with_raspberry_pi_pico]: https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf
 [link-w5100s]: https://docs.wiznet.io/Product/iEthernet/W5100S/overview
 [link-rp2040]: https://www.raspberrypi.org/products/rp2040/
@@ -151,3 +171,11 @@ Link
 [link-sntp]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/sntp
 [link-tcp_client_over_ssl]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/tcp_client_over_ssl
 [link-ioLibrary_driver]: https://github.com/Wiznet/ioLibrary_Driver
+[link-mbedtls_library]: https://github.com/ARMmbed/mbedtls
+[link-pico_sdk]: https://github.com/raspberrypi/pico-sdk
+[link-pico_extras]:https://github.com/raspberrypi/pico-extras
+[link-ioLibrary_driver_port]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/port/ioLibrary_Driver
+[link-mbedtls_port]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/port/mbedtls/inc
+[link-timer_port]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/port/timer
+[link-RP2040-HAT-C_1.0.0_version]: https://github.com/Wiznet/RP2040-HAT-C/tree/3e60654e71f9afdd586c3368f8994dc03c6274e4
+

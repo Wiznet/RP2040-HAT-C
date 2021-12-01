@@ -4,3 +4,9 @@
 [submodule "libraries/mbedtls"]
 	path = libraries/mbedtls
 	url = https://github.com/ARMmbed/mbedtls.git
+[submodule "libraries/pico-sdk"]
+	path = libraries/pico-sdk
+	url = https://github.com/raspberrypi/pico-sdk.git
+[submodule "libraries/pico-extras"]
+	path = libraries/pico-extras
+	url = https://github.com/raspberrypi/pico-extras.git

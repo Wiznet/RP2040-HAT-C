@@ -2,17 +2,13 @@ add_executable(w5x00_mqtt_subscribe
         w5x00_mqtt_subscribe.c
         )
 
-target_include_directories(w5x00_mqtt_subscribe PUBLIC
-        ${CMAKE_SOURCE_DIR}/libraries/ioLibrary_Driver/Ethernet
-        ${CMAKE_SOURCE_DIR}/libraries/ioLibrary_Driver/Internet/MQTT        
-        )
-
-target_link_libraries(w5x00_mqtt_subscribe PUBLIC
+target_link_libraries(w5x00_mqtt_subscribe PRIVATE
         pico_stdlib
         hardware_spi
         hardware_dma
         ETHERNET_FILES
-        MQTT_FILES
+        MQTT_FILES        
+        SPI_FILES
         )
 
 pico_enable_stdio_usb(w5x00_mqtt_subscribe 1)
