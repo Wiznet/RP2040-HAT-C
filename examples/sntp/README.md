@@ -26,7 +26,7 @@ If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 To test the SNTP example, minor settings shall be done in code.
 
-1. Setup SPI port and pin.
+1. Setup SPI port and pin in 'RP2040-HAT-C/port/ioLibrary_Driver/w5x00spi.h' directory.
 
 Setup the SPI interface you use.
 
@@ -48,7 +48,7 @@ If you want to test with the SNTP example using SPI DMA, uncomment USE_SPI_DMA.
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
 
-2. Setup network configuration such as IP.
+2. Setup network configuration such as IP in 'RP2040-HAT-C/examples/sntp/w5x00_sntp.c' directory.
 
 Setup IP and other network settings to suit your network environment.
 
@@ -65,7 +65,7 @@ static wiz_NetInfo g_net_info =
 };
 ```
 
-3. Setup SNTP configuration
+3. Setup SNTP configuration in 'RP2040-HAT-C/examples/sntp/w5x00_sntp.c' directory.
 
 Setup time zone and SNTP server IP to get time.
 
@@ -115,3 +115,4 @@ Link
 [link-raspberry_pi_pico_usb_mass_storage]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/sntp/raspberry_pi_pico_usb_mass_storage.png
 [link-connect_to_serial_com_port]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/sntp/connect_to_serial_com_port.png
 [link-see_network_information_of_raspberry_pi_pico_and_get_time_from_sntp_server]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/sntp/see_network_information_of_raspberry_pi_pico_and_get_time_from_sntp_server.png
+

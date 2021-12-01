@@ -2,18 +2,13 @@ add_executable(w5x00_http_server
         w5x00_http_server.c
         )
 
-target_include_directories(w5x00_http_server PUBLIC
-        ${CMAKE_SOURCE_DIR}/libraries/ioLibrary_Driver/Ethernet
-        ${CMAKE_SOURCE_DIR}/libraries/ioLibrary_Driver/Internet/httpServer
-		${CMAKE_CURRENT_SOURCE_DIR}
-        )
-
-target_link_libraries(w5x00_http_server PUBLIC
+target_link_libraries(w5x00_http_server PRIVATE
         pico_stdlib
         hardware_spi
         hardware_dma
         ETHERNET_FILES
         HTTPSERVER_FILES
+        SPI_FILES
         )
 
 pico_enable_stdio_usb(w5x00_http_server 1)

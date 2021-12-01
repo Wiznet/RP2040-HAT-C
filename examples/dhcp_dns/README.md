@@ -15,9 +15,7 @@ The following serial terminal program is required for DHCP & DNS example test, d
 If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 1. Combine WIZnet Ethernet HAT with Raspberry Pi Pico.
-
 2. Connect ethernet cable to WIZnet Ethernet HAT or W5100S-EVB-Pico ethernet port.
-
 3. Connect Raspberry Pi Pico or W5100S-EVB-Pico to desktop or laptop using 5 pin micro USB cable.
 
 
@@ -26,7 +24,7 @@ If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 To test the DHCP & DNS example, minor settings shall be done in code.
 
-1. Setup SPI port and pin.
+1. Setup SPI port and pin in 'RP2040-HAT-C/port/ioLibrary_Driver/w5x00spi.h' directory.
 
 Setup the SPI interface you use.
 
@@ -48,7 +46,7 @@ If you want to test with the DHCP & DNS example using SPI DMA, uncomment USE_SPI
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
 
-2. Setup network configuration such as IP.
+2. Setup network configuration such as IP in 'RP2040-HAT-C/examples/dhcp_dns/w5x00_dhcp_dns.c' directory.
 
 Setup IP, other network settings to suit your network environment and whether to use DHCP.
 
@@ -67,7 +65,7 @@ static wiz_NetInfo g_net_info =
 
 3. Setup DNS configuration
 
-Setup the domain name that you want to get IP.
+Setup the domain name that you want to get IP in 'RP2040-HAT-C/examples/dhcp_dns/w5x00_dhcp_dns.c' directory.
 
 ```cpp
 /* DNS */
@@ -112,3 +110,4 @@ Link
 [link-raspberry_pi_pico_usb_mass_storage]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/dhcp_dns/raspberry_pi_pico_usb_mass_storage.png
 [link-connect_to_serial_com_port]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/dhcp_dns/connect_to_serial_com_port.png
 [link-see_network_information_ip_assigned_by_dhcp_of_raspberry_pi_pico_and_get_ip_through_dns]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/dhcp_dns/see_network_information_ip_assigned_by_dhcp_of_raspberry_pi_pico_and_get_ip_through_dns.png
+

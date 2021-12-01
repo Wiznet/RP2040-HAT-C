@@ -2,17 +2,13 @@ add_executable(w5x00_loopback
         w5x00_loopback.c
         )
 
-target_include_directories(w5x00_loopback PUBLIC
-        ${CMAKE_SOURCE_DIR}/libraries/ioLibrary_Driver/Application/loopback
-        ${CMAKE_SOURCE_DIR}/libraries/ioLibrary_Driver/Ethernet
-        )
-
-target_link_libraries(w5x00_loopback PUBLIC
+target_link_libraries(w5x00_loopback PRIVATE
         pico_stdlib
         hardware_spi
         hardware_dma
         LOOPBACK_FILES
         ETHERNET_FILES
+        SPI_FILES
         )
 
 pico_enable_stdio_usb(w5x00_loopback 1)
