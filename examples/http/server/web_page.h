@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2021 WIZnet Co.,Ltd
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 #ifndef _WEB_PAGE_H_
 #define _WEB_PAGE_H_
 
@@ -12,4 +18,4 @@
                     "</body>"\
                     "</html>"
 
-#endif // _WEB_PAGE_H_
+#endif /* _WEB_PAGE_H_ */

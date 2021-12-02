@@ -69,7 +69,6 @@ static uint8_t g_dns_get_ip_flag = 0;
 /* Timer */
 static volatile uint16_t g_msec_cnt = 0;
 
-
 /**
   * ----------------------------------------------------------------------------------------------------
   * Functions
@@ -81,7 +80,7 @@ static void wizchip_dhcp_assign(void);
 static void wizchip_dhcp_conflict(void);
 
 /* Timer */
-void repeating_timer_callback(void);
+static void repeating_timer_callback(void);
 
 /**
   * ----------------------------------------------------------------------------------------------------
@@ -96,16 +95,15 @@ int main()
     uint8_t dns_retry = 0;
 
     stdio_init_all();
-    
+
     wizchip_spi_initialize();
     wizchip_cris_initialize();
-    
+
     wizchip_reset();
     wizchip_initialize();
     wizchip_check();
-    
-    wizchip_1ms_timer_initialize(repeating_timer_callback);
 
+    wizchip_1ms_timer_initialize(repeating_timer_callback);
 
     if (g_net_info.dhcp == NETINFO_DHCP) // DHCP
     {
@@ -242,7 +240,7 @@ static void wizchip_dhcp_conflict(void)
 }
 
 /* Timer */
-void repeating_timer_callback(void)
+static void repeating_timer_callback(void)
 {
     g_msec_cnt++;
 
@@ -251,6 +249,6 @@ void repeating_timer_callback(void)
         g_msec_cnt = 0;
 
         DHCP_time_handler();
-        DNS_time_handler();        
+        DNS_time_handler();
     }
 }

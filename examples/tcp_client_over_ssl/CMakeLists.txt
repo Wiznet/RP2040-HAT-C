@@ -1,8 +1,10 @@
-add_executable(w5x00_tcp_client_over_ssl
-	w5x00_tcp_client_over_ssl.c
+set(TARGET_NAME w5x00_tcp_client_over_ssl)
+
+add_executable(${TARGET_NAME}
+        ${TARGET_NAME}.c
         )
 
-target_link_libraries(w5x00_tcp_client_over_ssl PRIVATE
+target_link_libraries(${TARGET_NAME} PRIVATE
         pico_stdlib
         hardware_spi
         hardware_dma
@@ -14,7 +16,7 @@ target_link_libraries(w5x00_tcp_client_over_ssl PRIVATE
         mbedtls
         )
 
-pico_enable_stdio_usb(w5x00_tcp_client_over_ssl 1)
-pico_enable_stdio_uart(w5x00_tcp_client_over_ssl 0)
+pico_enable_stdio_usb(${TARGET_NAME} 1)
+pico_enable_stdio_uart(${TARGET_NAME} 0)
 
-pico_add_extra_outputs(w5x00_tcp_client_over_ssl)
+pico_add_extra_outputs(${TARGET_NAME})

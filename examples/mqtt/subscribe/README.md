@@ -27,7 +27,7 @@ If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 To test the MQTT Subscribe example, minor settings shall be done in code.
 
-1. Setup SPI port and pin in 'RP2040-HAT-C/port/ioLibrary_Driver/w5x00spi.h' directory.
+1. Setup SPI port and pin in 'w5x00_spi.h' in 'RP2040-HAT-C/port/ioLibrary_Driver/' directory.
 
 Setup the SPI interface you use.
 
@@ -49,7 +49,7 @@ If you want to test with the MQTT Subscribe example using SPI DMA, uncomment USE
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
 
-2. Setup network configuration such as IP in 'RP2040-HAT-C/examples/mqtt/subscribe/w5x00_mqtt_subscribe.c' directory.
+2. Setup network configuration such as IP in 'w5x00_mqtt_subscribe.c' which is the MQTT Subscribe example in 'RP2040-HAT-C/examples/mqtt/subscribe/' directory.
 
 Setup IP and other network settings to suit your network environment.
 
@@ -66,7 +66,7 @@ static wiz_NetInfo g_net_info =
 };
 ```
 
-3. Setup MQTT configuration in 'RP2040-HAT-C/examples/mqtt/subscribe/w5x00_mqtt_subscribe.c' directory.
+3. Setup MQTT configuration in 'w5x00_mqtt_subscribe.c' in 'RP2040-HAT-C/examples/mqtt/subscribe/' directory.
 
 In the MQTT configuration, the broker IP is the IP of your desktop or laptop where broker will be created.
 

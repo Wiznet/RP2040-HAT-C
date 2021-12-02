@@ -1,19 +1,21 @@
-add_executable(w5x00_dhcp_dns
-        w5x00_dhcp_dns.c
+set(TARGET_NAME w5x00_dhcp_dns)
+
+add_executable(${TARGET_NAME}
+        ${TARGET_NAME}.c
         )
 
-target_link_libraries(w5x00_dhcp_dns PRIVATE
+target_link_libraries(${TARGET_NAME} PRIVATE
         pico_stdlib
         hardware_spi
         hardware_dma
         ETHERNET_FILES
+        SPI_FILES
         DHCP_FILES
         DNS_FILES
-        SPI_FILES
         TIMER_FILES
         )
 
-pico_enable_stdio_usb(w5x00_dhcp_dns 1)
-pico_enable_stdio_uart(w5x00_dhcp_dns 0)
+pico_enable_stdio_usb(${TARGET_NAME} 1)
+pico_enable_stdio_uart(${TARGET_NAME} 0)
 
-pico_add_extra_outputs(w5x00_dhcp_dns)
+pico_add_extra_outputs(${TARGET_NAME})

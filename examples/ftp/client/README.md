@@ -25,7 +25,7 @@ If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 To test the FTP Client example, minor settings shall be done in code.
 
-1. Setup SPI port and pin in 'RP2040-HAT-C/port/ioLibrary_Driver/w5x00spi.h' directory.
+1. Setup SPI port and pin in 'w5x00_spi.h' in 'RP2040-HAT-C/port/ioLibrary_Driver/' directory.
 
 Setup the SPI interface you use.
 
@@ -47,7 +47,7 @@ If you want to test with the ftp_client example using SPI DMA, uncomment USE_SPI
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
 
-2. Setup network configuration such as IP in 'RP2040-HAT-C/examples/ftp/client/w5x00_ftp_client.c' directory.
+2. Setup network configuration such as IP in 'w5x00_ftp_client.c' which is the FTP Client example in 'RP2040-HAT-C/examples/ftp/client/' directory.
 
 Setup IP and other network settings to suit your network environment.
 
@@ -64,7 +64,7 @@ static wiz_NetInfo g_net_info =
 };
 ```
 
-3. Setup FTP client configuration in ftpc.c in 'RP2040-HAT-C/libraries/ioLibrary_Driver/Internet/FTPClient/ftpc.c' directory.
+3. Setup FTP client configuration in 'ftpc.c' in 'RP2040-HAT-C/libraries/ioLibrary_Driver/Internet/FTPClient' directory.
 
 ```cpp
 uint8_t FTP_destip[4] = {192, 168, 11, 230};    // For FTP client examples; destination network info
@@ -160,4 +160,3 @@ Link
 [link-press_num1]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/press_num1.png
 [link-ftp_server_directory]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/ftp_server_directory.png
 [link-ftp_wireshark_result]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/ftp/client/ftp_wireshark_result.png
-

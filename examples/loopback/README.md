@@ -27,7 +27,7 @@ If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 To test the Loopback example, minor settings shall be done in code.
 
-1. Setup SPI port and pin in 'RP2040-HAT-C/port/ioLibrary_Driver/w5x00spi.h' directory.
+1. Setup SPI port and pin in 'w5x00_spi.h' in 'RP2040-HAT-C/port/ioLibrary_Driver/' directory.
 
 Setup the SPI interface you use.
 
@@ -49,7 +49,7 @@ If you want to test with the Loopback example using SPI DMA, uncomment USE_SPI_D
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
 
-2. Setup network configuration such as IP in 'RP2040-HAT-C/examples/loopback/w5x00_loopback.c' directory.
+2. Setup network configuration such as IP in 'w5x00_loopback.c' which is the Loopback example in 'RP2040-HAT-C/examples/loopback/' directory.
 
 Setup IP and other network settings to suit your network environment.
 
@@ -66,7 +66,7 @@ static wiz_NetInfo g_net_info =
 };
 ```
 
-3. Setup loopback configuration in 'RP2040-HAT-C/examples/loopback/w5x00_loopback.c' directory.
+3. Setup loopback configuration in 'w5x00_loopback.c' in 'RP2040-HAT-C/examples/loopback/' directory.
 
 ```cpp
 /* Port */
@@ -125,4 +125,3 @@ Link
 [link-connect_to_loopback_server_using_hercules_tcp_client_1]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/connect_to_loopback_server_using_hercules_tcp_client_1.png
 [link-connect_to_loopback_server_using_hercules_tcp_client_2]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/connect_to_loopback_server_using_hercules_tcp_client_2.png
 [link-receive_back_sent_message]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/loopback/receive_back_sent_message.png
-

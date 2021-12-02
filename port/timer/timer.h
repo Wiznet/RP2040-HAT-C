@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2021 WIZnet Co.,Ltd
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 #ifndef _TIMER_H_
 #define _TIMER_H_
 
@@ -6,9 +12,8 @@
   * Macros
   * ----------------------------------------------------------------------------------------------------
   */
- /* Timeout */
-#define RECV_TIMEOUT (1000 * 10) //  10 seconds
-
+/* Timeout */
+#define RECV_TIMEOUT (1000 * 10) // 10 seconds
 
 /**
   * ----------------------------------------------------------------------------------------------------
@@ -22,4 +27,4 @@ bool wizchip_1ms_timer_callback(struct repeating_timer *t);
 /* Delay */
 void wizchip_delay_ms(uint32_t ms);
 
-#endif
+#endif /* _TIMER_H_ */

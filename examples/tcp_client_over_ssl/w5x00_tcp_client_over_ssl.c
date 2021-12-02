@@ -17,15 +17,15 @@
 
 #include "wizchip_conf.h"
 #include "socket.h"
-#include "timer.h"
 #include "w5x00_spi.h"
+
+#include "timer.h"
 
 #include "mbedtls/x509_crt.h"
 #include "mbedtls/error.h"
 #include "mbedtls/ssl.h"
 #include "mbedtls/ctr_drbg.h"
 #include "mbedtls/compat-1.3.h"
-
 
 /**
   * ----------------------------------------------------------------------------------------------------
@@ -70,7 +70,6 @@ static mbedtls_ssl_context g_ssl;
 /* Timer  */
 static volatile uint32_t g_msec_cnt = 0;
 
-
 /**
   * ----------------------------------------------------------------------------------------------------
   * Functions
@@ -82,7 +81,7 @@ static int ssl_random_callback(void *p_rng, unsigned char *output, size_t output
 static int recv_timeout(void *ctx, unsigned char *buf, size_t len, uint32_t timeout);
 
 /* Timer  */
-void repeating_timer_callback(void);
+static void repeating_timer_callback(void);
 static time_t millis(void);
 
 /**
@@ -198,7 +197,6 @@ int main()
     /* Infinite loop */
     while (1)
     {
-                
         getsockopt((uint8_t)(g_ssl.p_bio), SO_RECVBUF, &len);
 
         if (len > 0)
@@ -216,7 +214,6 @@ int main()
         }
     }
 }
-
 
 /**
   * ----------------------------------------------------------------------------------------------------
@@ -279,12 +276,13 @@ static int ssl_random_callback(void *p_rng, unsigned char *output, size_t output
 
 static int recv_timeout(void *ctx, unsigned char *buf, size_t len, uint32_t timeout)
 {
-    uint32_t start_ms = millis();
     uint16_t rcv_len = 0;
+    uint32_t start_ms = millis();
+
     do
     {
         getsockopt((uint8_t)(ctx), SO_RECVBUF, &rcv_len);
-        
+
         if (rcv_len > 0)
         {
             return recv((uint8_t)ctx, (uint8_t *)buf, (uint16_t)len);
@@ -295,9 +293,9 @@ static int recv_timeout(void *ctx, unsigned char *buf, size_t len, uint32_t time
 }
 
 /* Timer */
-void repeating_timer_callback(void)
+static void repeating_timer_callback(void)
 {
-  g_msec_cnt++;
+    g_msec_cnt++;
 }
 
 static time_t millis(void)

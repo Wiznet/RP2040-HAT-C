@@ -68,7 +68,7 @@ static volatile uint32_t g_msec_cnt = 0;
   * ----------------------------------------------------------------------------------------------------
   */
 /* Timer  */
-void repeating_timer_callback(void);
+static void repeating_timer_callback(void);
 static time_t millis(void);
 
 /**
@@ -85,14 +85,14 @@ int main()
 
     stdio_init_all();
 
-	  wizchip_spi_initialize();
+    wizchip_spi_initialize();
     wizchip_cris_initialize();
 
     wizchip_reset();
     wizchip_initialize();
     wizchip_check();
 
-    wizchip_1ms_timer_initialize(repeating_timer_callback);    
+    wizchip_1ms_timer_initialize(repeating_timer_callback);
 
     network_initialize(g_net_info);
 
@@ -101,7 +101,7 @@ int main()
     /* Get network information */
     print_network_information(g_net_info);
 
-    start_ms = millis();    
+    start_ms = millis();
 
     /* Get time */
     do
@@ -112,7 +112,7 @@ int main()
         {
             break;
         }
-    }while ((millis() - start_ms) < RECV_TIMEOUT);
+    } while ((millis() - start_ms) < RECV_TIMEOUT);
 
     if (retval != 1)
     {
@@ -127,7 +127,7 @@ int main()
     /* Infinite loop */
     while (1)
     {
-      ; // nothing to do
+        ; // nothing to do
     }
 }
 
@@ -136,10 +136,10 @@ int main()
   * Functions
   * ----------------------------------------------------------------------------------------------------
   */
- /* Timer */
-void repeating_timer_callback(void)
+/* Timer */
+static void repeating_timer_callback(void)
 {
-  g_msec_cnt++;
+    g_msec_cnt++;
 }
 
 static time_t millis(void)

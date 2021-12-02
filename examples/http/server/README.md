@@ -26,7 +26,7 @@ If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
 
 To test the HTTP Server example, minor settings shall be done in code.
 
-1. Setup SPI port and pin in 'RP2040-HAT-C/port/ioLibrary_Driver/w5x00spi.h' directory.
+1. Setup SPI port and pin in 'w5x00_spi.h' in 'RP2040-HAT-C/port/ioLibrary_Driver/' directory.
 
 Setup the SPI interface you use.
 
@@ -48,7 +48,7 @@ If you want to test with the HTTP Server example using SPI DMA, uncomment USE_SP
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
 ```
 
-2. Setup network configuration such as IP in 'RP2040-HAT-C/examples/http/server/w5x00_http_server.c' directory.
+2. Setup network configuration such as IP in 'w5x00_http_server.c' which is the HTTP Server example in 'RP2040-HAT-C/examples/http/server/' directory.
 
 Setup IP and other network settings to suit your network environment.
 

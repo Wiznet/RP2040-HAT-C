@@ -1,6 +1,11 @@
-#ifndef _WIZ_SPI_H_
-#define _WIZ_SPI_H_
+/**
+ * Copyright (c) 2021 WIZnet Co.,Ltd
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 
+#ifndef _W5X00_SPI_H_
+#define _W5X00_SPI_H_
 
 /**
   * ----------------------------------------------------------------------------------------------------
@@ -28,9 +33,6 @@
   * ----------------------------------------------------------------------------------------------------
   */
 /* W5x00 */
-void wizchip_reset(void);
-void wizchip_initialize(void);
-void wizchip_check(void);
 static inline void wizchip_select(void);
 static inline void wizchip_deselect(void);
 static uint8_t wizchip_read(void);
@@ -43,14 +45,15 @@ static void wizchip_critical_section_lock(void);
 static void wizchip_critical_section_unlock(void);
 void wizchip_spi_initialize(void);
 void wizchip_cris_initialize(void);
-
+void wizchip_reset(void);
+void wizchip_initialize(void);
+void wizchip_check(void);
 
 /* Network */
 void network_initialize(wiz_NetInfo net_info);
 void print_network_information(wiz_NetInfo net_info);
 
-
 /* Clock */
 void set_clock_khz(void);
 
-#endif
+#endif /* _W5X00_SPI_H_ */

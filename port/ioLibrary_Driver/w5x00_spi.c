@@ -1,4 +1,10 @@
 /**
+ * Copyright (c) 2021 WIZnet Co.,Ltd
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+/**
   * ----------------------------------------------------------------------------------------------------
   * Includes
   * ----------------------------------------------------------------------------------------------------
@@ -9,7 +15,6 @@
 
 #include "wizchip_conf.h"
 #include "w5x00_spi.h"
-
 
 /**
   * ----------------------------------------------------------------------------------------------------
@@ -30,51 +35,6 @@ static dma_channel_config dma_channel_config_rx;
   * Functions
   * ----------------------------------------------------------------------------------------------------
   */
-void wizchip_spi_initialize(void)
-{
-    // this example will use SPI0 at 5MHz
-    spi_init(SPI_PORT, 5000 * 1000);
-
-    gpio_set_function(PIN_SCK, GPIO_FUNC_SPI);
-    gpio_set_function(PIN_MOSI, GPIO_FUNC_SPI);
-    gpio_set_function(PIN_MISO, GPIO_FUNC_SPI);
-
-    // make the SPI pins available to picotool
-    bi_decl(bi_3pins_with_func(PIN_MISO, PIN_MOSI, PIN_SCK, GPIO_FUNC_SPI));
-
-    // chip select is active-low, so we'll initialise it to a driven-high state
-    gpio_init(PIN_CS);
-    gpio_set_dir(PIN_CS, GPIO_OUT);
-    gpio_put(PIN_CS, 1);
-    
-    // make the SPI pins available to picotool
-    bi_decl(bi_1pin_with_name(PIN_CS, "W5x00 CHIP SELECT"));
-
-#ifdef USE_SPI_DMA
-    dma_tx = dma_claim_unused_channel(true);
-    dma_rx = dma_claim_unused_channel(true);
-
-    dma_channel_config_tx = dma_channel_get_default_config(dma_tx);
-    channel_config_set_transfer_data_size(&dma_channel_config_tx, DMA_SIZE_8);
-    channel_config_set_dreq(&dma_channel_config_tx, DREQ_SPI0_TX);
-
-    // We set the inbound DMA to transfer from the SPI receive FIFO to a memory buffer paced by the SPI RX FIFO DREQ
-    // We coinfigure the read address to remain unchanged for each element, but the write
-    // address to increment (so data is written throughout the buffer)
-    dma_channel_config_rx = dma_channel_get_default_config(dma_rx);
-    channel_config_set_transfer_data_size(&dma_channel_config_rx, DMA_SIZE_8);
-    channel_config_set_dreq(&dma_channel_config_rx, DREQ_SPI0_RX);
-    channel_config_set_read_increment(&dma_channel_config_rx, false);
-    channel_config_set_write_increment(&dma_channel_config_rx, true);
-#endif
-}
-
-void wizchip_cris_initialize(void)
-{
-    critical_section_init(&g_wizchip_cri_sec);
-    reg_wizchip_cris_cbfunc(wizchip_critical_section_lock, wizchip_critical_section_unlock);
-}
-
 static inline void wizchip_select(void)
 {
     gpio_put(PIN_CS, 0);
@@ -173,6 +133,51 @@ static void wizchip_critical_section_unlock(void)
     critical_section_exit(&g_wizchip_cri_sec);
 }
 
+void wizchip_spi_initialize(void)
+{
+    // this example will use SPI0 at 5MHz
+    spi_init(SPI_PORT, 5000 * 1000);
+
+    gpio_set_function(PIN_SCK, GPIO_FUNC_SPI);
+    gpio_set_function(PIN_MOSI, GPIO_FUNC_SPI);
+    gpio_set_function(PIN_MISO, GPIO_FUNC_SPI);
+
+    // make the SPI pins available to picotool
+    bi_decl(bi_3pins_with_func(PIN_MISO, PIN_MOSI, PIN_SCK, GPIO_FUNC_SPI));
+
+    // chip select is active-low, so we'll initialise it to a driven-high state
+    gpio_init(PIN_CS);
+    gpio_set_dir(PIN_CS, GPIO_OUT);
+    gpio_put(PIN_CS, 1);
+
+    // make the SPI pins available to picotool
+    bi_decl(bi_1pin_with_name(PIN_CS, "W5x00 CHIP SELECT"));
+
+#ifdef USE_SPI_DMA
+    dma_tx = dma_claim_unused_channel(true);
+    dma_rx = dma_claim_unused_channel(true);
+
+    dma_channel_config_tx = dma_channel_get_default_config(dma_tx);
+    channel_config_set_transfer_data_size(&dma_channel_config_tx, DMA_SIZE_8);
+    channel_config_set_dreq(&dma_channel_config_tx, DREQ_SPI0_TX);
+
+    // We set the inbound DMA to transfer from the SPI receive FIFO to a memory buffer paced by the SPI RX FIFO DREQ
+    // We coinfigure the read address to remain unchanged for each element, but the write
+    // address to increment (so data is written throughout the buffer)
+    dma_channel_config_rx = dma_channel_get_default_config(dma_rx);
+    channel_config_set_transfer_data_size(&dma_channel_config_rx, DMA_SIZE_8);
+    channel_config_set_dreq(&dma_channel_config_rx, DREQ_SPI0_RX);
+    channel_config_set_read_increment(&dma_channel_config_rx, false);
+    channel_config_set_write_increment(&dma_channel_config_rx, true);
+#endif
+}
+
+void wizchip_cris_initialize(void)
+{
+    critical_section_init(&g_wizchip_cri_sec);
+    reg_wizchip_cris_cbfunc(wizchip_critical_section_lock, wizchip_critical_section_unlock);
+}
+
 void wizchip_initialize(void)
 {
     /* Deselect the FLASH : chip select high */
@@ -186,7 +191,6 @@ void wizchip_initialize(void)
 #ifdef USE_SPI_DMA
     reg_wizchip_spiburst_cbfunc(wizchip_read_burst, wizchip_write_burst);
 #endif
-    
 
     /* W5x00 initialize */
     uint8_t temp;

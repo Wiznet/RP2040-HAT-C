@@ -51,21 +51,21 @@
   */
 /* Network */
 static wiz_NetInfo g_net_info =
-	{
-		.mac = {0x00, 0x08, 0xDC, 0x12, 0x34, 0x56}, // MAC address
-		.ip = {192, 168, 11, 2},					 // IP address
-		.sn = {255, 255, 255, 0},					 // Subnet Mask
-		.gw = {192, 168, 11, 1},					 // Gateway
-		.dns = {8, 8, 8, 8},						 // DNS server
-		.dhcp = NETINFO_STATIC						 // DHCP enable/disable
+    {
+        .mac = {0x00, 0x08, 0xDC, 0x12, 0x34, 0x56}, // MAC address
+        .ip = {192, 168, 11, 2},                     // IP address
+        .sn = {255, 255, 255, 0},                    // Subnet Mask
+        .gw = {192, 168, 11, 1},                     // Gateway
+        .dns = {8, 8, 8, 8},                         // DNS server
+        .dhcp = NETINFO_STATIC                       // DHCP enable/disable
 };
 
 /* MQTT */
 static uint8_t g_mqtt_send_buf[ETHERNET_BUF_MAX_SIZE] = {
-	0,
+    0,
 };
 static uint8_t g_mqtt_recv_buf[ETHERNET_BUF_MAX_SIZE] = {
-	0,
+    0,
 };
 static uint8_t g_mqtt_broker_ip[4] = {192, 168, 11, 3};
 static Network g_mqtt_network;
@@ -87,83 +87,83 @@ static void message_arrived(MessageData *msg_data);
   */
 int main()
 {
-	/* Initialize */
-	int32_t retval = 0;
+    /* Initialize */
+    int32_t retval = 0;
 
-	stdio_init_all();
+    stdio_init_all();
 
-	wizchip_spi_initialize();
-	wizchip_cris_initialize();
+    wizchip_spi_initialize();
+    wizchip_cris_initialize();
 
-	wizchip_reset();
-	wizchip_initialize();
-	wizchip_check();
+    wizchip_reset();
+    wizchip_initialize();
+    wizchip_check();
 
-	network_initialize(g_net_info);
+    network_initialize(g_net_info);
 
-	/* Get network information */
-	print_network_information(g_net_info);
+    /* Get network information */
+    print_network_information(g_net_info);
 
-	NewNetwork(&g_mqtt_network, SOCKET_MQTT);
+    NewNetwork(&g_mqtt_network, SOCKET_MQTT);
 
-	retval = ConnectNetwork(&g_mqtt_network, g_mqtt_broker_ip, PORT_MQTT);
+    retval = ConnectNetwork(&g_mqtt_network, g_mqtt_broker_ip, PORT_MQTT);
 
-	if (retval != 1)
-	{
-		printf(" Network connect failed\n");
+    if (retval != 1)
+    {
+        printf(" Network connect failed\n");
 
-		while (1)
-			;
-	}
+        while (1)
+            ;
+    }
 
-	/* Initialize MQTT client */
-	MQTTClientInit(&g_mqtt_client, &g_mqtt_network, DEFAULT_TIMEOUT, g_mqtt_send_buf, ETHERNET_BUF_MAX_SIZE, g_mqtt_recv_buf, ETHERNET_BUF_MAX_SIZE);
+    /* Initialize MQTT client */
+    MQTTClientInit(&g_mqtt_client, &g_mqtt_network, DEFAULT_TIMEOUT, g_mqtt_send_buf, ETHERNET_BUF_MAX_SIZE, g_mqtt_recv_buf, ETHERNET_BUF_MAX_SIZE);
 
-	/* Connect to the MQTT broker */
-	g_mqtt_packet_connect_data.MQTTVersion = 3;
-	g_mqtt_packet_connect_data.cleansession = 1;
-	g_mqtt_packet_connect_data.willFlag = 0;
-	g_mqtt_packet_connect_data.keepAliveInterval = MQTT_KEEP_ALIVE;
-	g_mqtt_packet_connect_data.clientID.cstring = MQTT_CLIENT_ID;
-	g_mqtt_packet_connect_data.username.cstring = MQTT_USERNAME;
-	g_mqtt_packet_connect_data.password.cstring = MQTT_PASSWORD;
+    /* Connect to the MQTT broker */
+    g_mqtt_packet_connect_data.MQTTVersion = 3;
+    g_mqtt_packet_connect_data.cleansession = 1;
+    g_mqtt_packet_connect_data.willFlag = 0;
+    g_mqtt_packet_connect_data.keepAliveInterval = MQTT_KEEP_ALIVE;
+    g_mqtt_packet_connect_data.clientID.cstring = MQTT_CLIENT_ID;
+    g_mqtt_packet_connect_data.username.cstring = MQTT_USERNAME;
+    g_mqtt_packet_connect_data.password.cstring = MQTT_PASSWORD;
 
-	retval = MQTTConnect(&g_mqtt_client, &g_mqtt_packet_connect_data);
+    retval = MQTTConnect(&g_mqtt_client, &g_mqtt_packet_connect_data);
 
-	if (retval < 0)
-	{
-		printf(" MQTT connect failed : %d\n", retval);
+    if (retval < 0)
+    {
+        printf(" MQTT connect failed : %d\n", retval);
 
-		while (1)
-			;
-	}
+        while (1)
+            ;
+    }
 
-	printf(" MQTT connected\n");
+    printf(" MQTT connected\n");
 
-	/* Subscribe */
-	retval = MQTTSubscribe(&g_mqtt_client, MQTT_SUBSCRIBE_TOPIC, QOS0, message_arrived);
+    /* Subscribe */
+    retval = MQTTSubscribe(&g_mqtt_client, MQTT_SUBSCRIBE_TOPIC, QOS0, message_arrived);
 
-	if (retval < 0)
-	{
-		printf(" Subscribe failed : %d\n", retval);
+    if (retval < 0)
+    {
+        printf(" Subscribe failed : %d\n", retval);
 
-		while (1)
-			;
-	}
+        while (1)
+            ;
+    }
 
-	printf(" Subscribed\n");
+    printf(" Subscribed\n");
 
-	/* Infinite loop */
-	while (1)
-	{
-		if ((retval = MQTTYield(&g_mqtt_client, g_mqtt_packet_connect_data.keepAliveInterval)) < 0)
-		{
-			printf(" Yield error : %d\n", retval);
+    /* Infinite loop */
+    while (1)
+    {
+        if ((retval = MQTTYield(&g_mqtt_client, g_mqtt_packet_connect_data.keepAliveInterval)) < 0)
+        {
+            printf(" Yield error : %d\n", retval);
 
-			while (1)
-				;
-		}
-	}
+            while (1)
+                ;
+        }
+    }
 }
 
 /**
@@ -174,7 +174,7 @@ int main()
 /* MQTT */
 static void message_arrived(MessageData *msg_data)
 {
-	MQTTMessage *message = msg_data->message;
+    MQTTMessage *message = msg_data->message;
 
-	printf("%.*s", (uint32_t)message->payloadlen, (uint8_t *)message->payload);
+    printf("%.*s", (uint32_t)message->payloadlen, (uint8_t *)message->payload);
 }
