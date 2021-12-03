@@ -33,34 +33,6 @@
   * ----------------------------------------------------------------------------------------------------
   */
 /* W5x00 */
-/*! \brief W5x00 chip reset
- *  \ingroup w5x00_spi
- * 
- * Set a reset pin and reset.
- *
- * \param none
- */
-void wizchip_reset(void);
-
-/*! \brief Initialize WIZchip
- *  \ingroup w5x00_spi
- * Set callback function to read/write byte using SPI.
- * Set callback function for WIZCHIP select/deselect.
- * Set memory size of W5x00 chip and monitor PHY link status.
- * 
- * \param none
- */
-void wizchip_initialize(void);
-
-/*! \brief Check chip version
- *  \ingroup w5x00_spi
- * 
- * Get version information.
- * 
- * \param none
- */
-void wizchip_check(void);
-
 /*! \brief Set CS pin
  *  \ingroup w5x00_spi
  * 
@@ -120,9 +92,9 @@ static void wizchip_read_burst(uint8_t *pBuf, uint16_t len);
 static void wizchip_write_burst(uint8_t *pBuf, uint16_t len);
 #endif
 
-/*! \brief Enter a critical_section
+/*! \brief Enter a critical section
  *  \ingroup w5x00_spi
- * Set ciritical_section_enter_blocking function.
+ * Set ciritical section enter blocking function.
  * If the spin lock associated with this critical section is in use, then this
  * method will block until it is released.
  * 
@@ -130,10 +102,10 @@ static void wizchip_write_burst(uint8_t *pBuf, uint16_t len);
  */
 static void wizchip_critical_section_lock(void);
 
-/*! \brief Release a critical_section
+/*! \brief Release a critical section
  *  \ingroup w5x00_spi
- * Set ciritical_section_exit function.
- * Release a critical_section.
+ * Set ciritical section exit function.
+ * Release a critical section.
  * 
  * \param none
  */
@@ -149,7 +121,7 @@ static void wizchip_critical_section_unlock(void);
  */
 void wizchip_spi_initialize(void);
 
-/*! \brief Initialize a critical_section structure
+/*! \brief Initialize a critical section structure
  *  \ingroup w5x00_spi
  * The critical section is initialized ready for use.
  * Registers callback function for critical section for WIZchip.
@@ -158,6 +130,33 @@ void wizchip_spi_initialize(void);
  */
 void wizchip_cris_initialize(void);
 
+/*! \brief W5x00 chip reset
+ *  \ingroup w5x00_spi
+ * 
+ * Set a reset pin and reset.
+ *
+ * \param none
+ */
+void wizchip_reset(void);
+
+/*! \brief Initialize WIZchip
+ *  \ingroup w5x00_spi
+ * Set callback function to read/write byte using SPI.
+ * Set callback function for WIZchip select/deselect.
+ * Set memory size of W5x00 chip and monitor PHY link status.
+ * 
+ * \param none
+ */
+void wizchip_initialize(void);
+
+/*! \brief Check chip version
+ *  \ingroup w5x00_spi
+ * 
+ * Get version information.
+ * 
+ * \param none
+ */
+void wizchip_check(void);
 
 /* Network */
 /*! \brief Initialize network
