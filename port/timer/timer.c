@@ -8,7 +8,7 @@
   * ----------------------------------------------------------------------------------------------------
   * Includes
   * ----------------------------------------------------------------------------------------------------
-  */ 
+  */
 #include <stdio.h>
 
 #include "pico/stdlib.h"
@@ -32,20 +32,20 @@ void (*callback_ptr)(void);
 /* Timer */
 void wizchip_1ms_timer_initialize(void (*callback)(void))
 {
-  callback_ptr = callback;
-  add_repeating_timer_us(-1000, wizchip_1ms_timer_callback, NULL, &g_timer);
+    callback_ptr = callback;
+    add_repeating_timer_us(-1000, wizchip_1ms_timer_callback, NULL, &g_timer);
 }
 
 bool wizchip_1ms_timer_callback(struct repeating_timer *t)
 {
-  if(callback_ptr != NULL)
-  {
-    callback_ptr();
-  }
+    if (callback_ptr != NULL)
+    {
+        callback_ptr();
+    }
 }
 
 /* Delay */
-void wizchip_delay_ms (uint32_t ms)
+void wizchip_delay_ms(uint32_t ms)
 {
-  sleep_ms(ms);
+    sleep_ms(ms);
 }
