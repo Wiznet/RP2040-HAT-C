@@ -70,6 +70,7 @@ static uint8_t wizchip_read(void);
  * \param tx_data Buffer of data to write
  */
 static void wizchip_write(uint8_t tx_data);
+
 #ifdef USE_SPI_DMA
 /*! \brief Configure all DMA parameters and optionally start transfer
  *  \ingroup w5x00_spi

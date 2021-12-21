@@ -79,9 +79,9 @@ If you want to modify the code that MCU-dependent and use a MCU other than **RP2
 
 port is located in the '**RP2040-HAT-C/port/**' directory.
 
-- [**ioLibrary_Driver**][link-_port_iolibrary_driver]
+- [**ioLibrary_Driver**][link-port_iolibrary_driver]
 - [**mbedtls**][link-port_mbedtls]
-- [**timer**][link-_port_timer]
+- [**timer**][link-port_timer]
 
 The structure of this **RP2040-HAT-C 2.0.0** version has changed a lot compared to the previous version. If you want to refer to the previous version, please refer to the link below.
 
@@ -144,14 +144,14 @@ We moved the MCU dependent code to the port directory. The tree of port is shown
 RP2040-HAT-C
 ┣ port
     ┣ ioLibrary_Driver
-    ┃	┣ w5x00_spi.c
-    ┃	┗ w5x00_spi.h
+    ┃   ┣ w5x00_spi.c
+    ┃   ┗ w5x00_spi.h
     ┣ mbedtls
-    ┃	┗ inc
-    ┃	┃	┗ ssl_config.h
+    ┃   ┗ inc
+    ┃   ┃   ┗ ssl_config.h
     ┣ timer
-    ┃	┣ timer.c
-    ┃	┗ timer.h
+    ┃   ┣ timer.c
+    ┃   ┗ timer.h
     ┣ CMakeLists.txt
     ┗ port_common.h
 ```
@@ -198,6 +198,7 @@ static uint8_t wizchip_read(void);
  * \param tx_data Buffer of data to write
  */
 static void wizchip_write(uint8_t tx_data);
+
 #ifdef USE_SPI_DMA
 /*! \brief Configure all DMA parameters and optionally start transfer
  *  \ingroup w5x00_spi
