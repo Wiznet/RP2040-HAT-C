@@ -125,8 +125,8 @@ cd [user path]/RP2040-HAT-C/libraries/ioLibrary_Driver
 cd D:/RP2040/RP2040-HAT-C/libraries/ioLibrary_Driver
 
 /* Patch */
-git apply ../../patches/01_ethernet_chip.patch
-git apply ../../patches/02_ftp_client.patch
+git apply ../../patches/01_iolibrary_driver_ethernet_chip.patch
+git apply ../../patches/02_iolibrary_driver_ftp_client.patch
 ```
 
 3. Test
