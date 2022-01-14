@@ -276,14 +276,14 @@ static int ssl_random_callback(void *p_rng, unsigned char *output, size_t output
 
 static int recv_timeout(void *ctx, unsigned char *buf, size_t len, uint32_t timeout)
 {
-    uint16_t rcv_len = 0;
+    uint16_t recv_len = 0;
     uint32_t start_ms = millis();
 
     do
     {
-        getsockopt((uint8_t)(ctx), SO_RECVBUF, &rcv_len);
+        getsockopt((uint8_t)(ctx), SO_RECVBUF, &recv_len);
 
-        if (rcv_len > 0)
+        if (recv_len > 0)
         {
             return recv((uint8_t)ctx, (uint8_t *)buf, (uint16_t)len);
         }
