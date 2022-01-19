@@ -3,7 +3,7 @@ add_library(ETHERNET_FILES STATIC)
 
 target_sources(ETHERNET_FILES PUBLIC
         ${WIZNET_DIR}/Ethernet/socket.c
-        ${WIZNET_DIR}/Ethernet/wizchip_conf.c	
+        ${WIZNET_DIR}/Ethernet/wizchip_conf.c
         )
 
 target_include_directories(ETHERNET_FILES INTERFACE
@@ -198,7 +198,7 @@ target_sources(MQTT_FILES PUBLIC
 target_include_directories(MQTT_FILES PUBLIC
         ${WIZNET_DIR}/Ethernet
         ${WIZNET_DIR}/Internet/MQTT
-        ${WIZNET_DIR}/Internet/MQTTPacket/src	
+        ${WIZNET_DIR}/Internet/MQTTPacket/src
         ) 
 
 # SNTP

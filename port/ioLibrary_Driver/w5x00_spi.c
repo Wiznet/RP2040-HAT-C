@@ -217,14 +217,25 @@ void wizchip_initialize(void)
 
 void wizchip_check(void)
 {
+#if (_WIZCHIP_ == W5100S)
     /* Read version register */
-    if (getVER() != 0x51) // W5100S
+    if (getVER() != 0x51)
     {
-        printf(" ACCESS ERR : VERSIONR != 0x51, read value = 0x%02x\n", getVER());
+        printf(" ACCESS ERR : VERSION != 0x51, read value = 0x%02x\n", getVER());
 
         while (1)
             ;
     }
+#elif (_WIZCHIP_ == W5500)
+    /* Read version register */
+    if (getVERSIONR() != 0x04)
+    {
+        printf(" ACCESS ERR : VERSION != 0x04, read value = 0x%02x\n", getVERSIONR());
+
+        while (1)
+            ;
+    }
+#endif
 }
 
 /* Network */
