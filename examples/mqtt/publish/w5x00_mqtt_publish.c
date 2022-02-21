@@ -5,10 +5,10 @@
  */
 
 /**
-  * ----------------------------------------------------------------------------------------------------
-  * Includes
-  * ----------------------------------------------------------------------------------------------------
-  */
+ * ----------------------------------------------------------------------------------------------------
+ * Includes
+ * ----------------------------------------------------------------------------------------------------
+ */
 #include <stdio.h>
 #include <string.h>
 
@@ -20,11 +20,13 @@
 #include "mqtt_interface.h"
 #include "MQTTClient.h"
 
+#include "timer.h"
+
 /**
-  * ----------------------------------------------------------------------------------------------------
-  * Macros
-  * ----------------------------------------------------------------------------------------------------
-  */
+ * ----------------------------------------------------------------------------------------------------
+ * Macros
+ * ----------------------------------------------------------------------------------------------------
+ */
 /* Buffer */
 #define ETHERNET_BUF_MAX_SIZE (1024 * 2)
 
@@ -43,13 +45,14 @@
 #define MQTT_PASSWORD "0123456789"
 #define MQTT_PUBLISH_TOPIC "publish_topic"
 #define MQTT_PUBLISH_PAYLOAD "Hello, World!"
-#define MQTT_KEEP_ALIVE 60 // 60 milliseconds
+#define MQTT_PUBLISH_PERIOD (1000 * 10) // 10 seconds
+#define MQTT_KEEP_ALIVE 60              // 60 milliseconds
 
 /**
-  * ----------------------------------------------------------------------------------------------------
-  * Variables
-  * ----------------------------------------------------------------------------------------------------
-  */
+ * ----------------------------------------------------------------------------------------------------
+ * Variables
+ * ----------------------------------------------------------------------------------------------------
+ */
 /* Network */
 static wiz_NetInfo g_net_info =
     {
@@ -74,21 +77,34 @@ static MQTTClient g_mqtt_client;
 static MQTTPacket_connectData g_mqtt_packet_connect_data = MQTTPacket_connectData_initializer;
 static MQTTMessage g_mqtt_message;
 
-/**
-  * ----------------------------------------------------------------------------------------------------
-  * Functions
-  * ----------------------------------------------------------------------------------------------------
-  */
+/* Timer  */
+static volatile uint32_t g_msec_cnt = 0;
 
 /**
-  * ----------------------------------------------------------------------------------------------------
-  * Main
-  * ----------------------------------------------------------------------------------------------------
-  */
+ * ----------------------------------------------------------------------------------------------------
+ * Functions
+ * ----------------------------------------------------------------------------------------------------
+ */
+/* Clock */
+static void set_clock_khz(void);
+
+/* Timer  */
+static void repeating_timer_callback(void);
+static time_t millis(void);
+
+/**
+ * ----------------------------------------------------------------------------------------------------
+ * Main
+ * ----------------------------------------------------------------------------------------------------
+ */
 int main()
 {
     /* Initialize */
     int32_t retval = 0;
+    uint32_t start_ms = 0;
+    uint32_t end_ms = 0;
+
+    set_clock_khz();
 
     stdio_init_all();
 
@@ -98,6 +114,8 @@ int main()
     wizchip_reset();
     wizchip_initialize();
     wizchip_check();
+
+    wizchip_1ms_timer_initialize(repeating_timer_callback);
 
     network_initialize(g_net_info);
 
@@ -140,28 +158,38 @@ int main()
 
     printf(" MQTT connected\n");
 
-    /* Publish */
+    /* Configure publish message */
     g_mqtt_message.qos = QOS0;
     g_mqtt_message.retained = 0;
     g_mqtt_message.dup = 0;
     g_mqtt_message.payload = MQTT_PUBLISH_PAYLOAD;
     g_mqtt_message.payloadlen = strlen(g_mqtt_message.payload);
 
-    retval = MQTTPublish(&g_mqtt_client, MQTT_PUBLISH_TOPIC, &g_mqtt_message);
-
-    if (retval < 0)
-    {
-        printf(" Publish failed : %d\n", retval);
-
-        while (1)
-            ;
-    }
-
-    printf(" Published\n");
+    start_ms = millis();
 
     /* Infinite loop */
     while (1)
     {
+        end_ms = millis();
+
+        if (end_ms > start_ms + MQTT_PUBLISH_PERIOD)
+        {
+            /* Publish */
+            retval = MQTTPublish(&g_mqtt_client, MQTT_PUBLISH_TOPIC, &g_mqtt_message);
+
+            if (retval < 0)
+            {
+                printf(" Publish failed : %d\n", retval);
+
+                while (1)
+                    ;
+            }
+
+            printf(" Published\n");
+
+            start_ms = millis();
+        }
+
         if ((retval = MQTTYield(&g_mqtt_client, g_mqtt_packet_connect_data.keepAliveInterval)) < 0)
         {
             printf(" Yield error : %d\n", retval);
@@ -173,7 +201,35 @@ int main()
 }
 
 /**
-  * ----------------------------------------------------------------------------------------------------
-  * Functions
-  * ----------------------------------------------------------------------------------------------------
-  */
+ * ----------------------------------------------------------------------------------------------------
+ * Functions
+ * ----------------------------------------------------------------------------------------------------
+ */
+/* Clock */
+static void set_clock_khz(void)
+{
+    // set a system clock frequency in khz
+    set_sys_clock_khz(PLL_SYS_KHZ, true);
+
+    // configure the specified clock
+    clock_configure(
+        clk_peri,
+        0,                                                // No glitchless mux
+        CLOCKS_CLK_PERI_CTRL_AUXSRC_VALUE_CLKSRC_PLL_SYS, // System PLL on AUX mux
+        PLL_SYS_KHZ * 1000,                               // Input frequency
+        PLL_SYS_KHZ * 1000                                // Output (must be same as no divider)
+    );
+}
+
+/* Timer */
+static void repeating_timer_callback(void)
+{
+    g_msec_cnt++;
+
+    MilliTimer_Handler();
+}
+
+static time_t millis(void)
+{
+    return g_msec_cnt;
+}

@@ -305,16 +305,6 @@ void network_initialize(wiz_NetInfo net_info);
  * \param net_info network information.
  */
 void print_network_information(wiz_NetInfo net_info);
-
-/* Clock */
-/*! \brief Attempt to set a system clock frequency in khz
- *  \ingroup w5x00_spi
- * Set a system clock frequency in khz.
- * Configure the specified clock.
- *
- * \param none
- */
-void set_clock_khz(void);
 ```
 
 - **timer**

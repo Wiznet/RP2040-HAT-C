@@ -11,6 +11,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE
         ETHERNET_FILES
         SPI_FILES
         MQTT_FILES
+        TIMER_FILES
         )
 
 pico_enable_stdio_usb(${TARGET_NAME} 1)
