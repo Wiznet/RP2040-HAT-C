@@ -161,41 +161,44 @@ RP2040-HAT-C
 If you want to change things related to SPI, such as the SPI port number and SPI read/write function, or use a different MCU without using the RP2040, you need to change the code in the '**RP2040-HAT-C/port/ioLibrary_Driver/**' directory. Here is information about functions.
 
 ```cpp
+/* W5x00 */
 /*! \brief Set CS pin
  *  \ingroup w5x00_spi
  *
- * Set chip select pin of spi0 to low(Active low).
+ *  Set chip select pin of spi0 to low(Active low).
  *
- * \param none
+ *  \param none
  */
 static inline void wizchip_select(void);
 
 /*! \brief Set CS pin
  *  \ingroup w5x00_spi
  *
- * Set chip select pin of spi0 to high(Inactive high).
+ *  Set chip select pin of spi0 to high(Inactive high).
  *
- * \param none
+ *  \param none
  */
 static inline void wizchip_deselect(void);
 
 /*! \brief Read from an SPI device, blocking
  *  \ingroup w5x00_spi
- * Set spi_read_blocking function.
- * Read byte from SPI to rx_data buffer.
- * Blocks until all data is transferred. No timeout, as SPI hardware always transfers at a known data rate.
  *
- * \param none
+ *  Set spi_read_blocking function.
+ *  Read byte from SPI to rx_data buffer.
+ *  Blocks until all data is transferred. No timeout, as SPI hardware always transfers at a known data rate.
+ *
+ *  \param none
  */
 static uint8_t wizchip_read(void);
 
 /*! \brief Write to an SPI device, blocking
  *  \ingroup w5x00_spi
- * Set spi_write_blocking function.
- * Write byte from tx_data buffer to SPI device.
- * Blocks until all data is transferred. No timeout, as SPI hardware always transfers at a known data rate.
  *
- * \param tx_data Buffer of data to write
+ *  Set spi_write_blocking function.
+ *  Write byte from tx_data buffer to SPI device.
+ *  Blocks until all data is transferred. No timeout, as SPI hardware always transfers at a known data rate.
+ *
+ *  \param tx_data Buffer of data to write
  */
 static void wizchip_write(uint8_t tx_data);
 
@@ -203,87 +206,92 @@ static void wizchip_write(uint8_t tx_data);
 /*! \brief Configure all DMA parameters and optionally start transfer
  *  \ingroup w5x00_spi
  *
- * Configure all DMA parameters and read from DMA
+ *  Configure all DMA parameters and read from DMA
  *
- * \param pBuf Buffer of data to read
- * \param len element count (each element is of size transfer_data_size)
+ *  \param pBuf Buffer of data to read
+ *  \param len element count (each element is of size transfer_data_size)
  */
 static void wizchip_read_burst(uint8_t *pBuf, uint16_t len);
 
 /*! \brief Configure all DMA parameters and optionally start transfer
  *  \ingroup w5x00_spi
  *
- * Configure all DMA parameters and write to DMA
+ *  Configure all DMA parameters and write to DMA
  *
- * \param pBuf Buffer of data to write
- * \param len element count (each element is of size transfer_data_size)
+ *  \param pBuf Buffer of data to write
+ *  \param len element count (each element is of size transfer_data_size)
  */
 static void wizchip_write_burst(uint8_t *pBuf, uint16_t len);
 #endif
 
 /*! \brief Enter a critical section
  *  \ingroup w5x00_spi
- * Set ciritical section enter blocking function.
- * If the spin lock associated with this critical section is in use, then this
- * method will block until it is released.
  *
- * \param none
+ *  Set ciritical section enter blocking function.
+ *  If the spin lock associated with this critical section is in use, then this
+ *  method will block until it is released.
+ *
+ *  \param none
  */
 static void wizchip_critical_section_lock(void);
 
 /*! \brief Release a critical section
  *  \ingroup w5x00_spi
- * Set ciritical section exit function.
- * Release a critical section.
  *
- * \param none
+ *  Set ciritical section exit function.
+ *  Release a critical section.
+ *
+ *  \param none
  */
 static void wizchip_critical_section_unlock(void);
 
 /*! \brief Initialize SPI instances and Set DMA channel
  *  \ingroup w5x00_spi
- * Set GPIO to spi0.
- * Puts the SPI into a known state, and enable it.
- * Set DMA channel completion channel.
  *
- * \param none
+ *  Set GPIO to spi0.
+ *  Puts the SPI into a known state, and enable it.
+ *  Set DMA channel completion channel.
+ *
+ *  \param none
  */
 void wizchip_spi_initialize(void);
 
 /*! \brief Initialize a critical section structure
  *  \ingroup w5x00_spi
- * The critical section is initialized ready for use.
- * Registers callback function for critical section for WIZchip.
  *
- * \param none
+ *  The critical section is initialized ready for use.
+ *  Registers callback function for critical section for WIZchip.
+ *
+ *  \param none
  */
 void wizchip_cris_initialize(void);
 
 /*! \brief W5x00 chip reset
  *  \ingroup w5x00_spi
  *
- * Set a reset pin and reset.
+ *  Set a reset pin and reset.
  *
- * \param none
+ *  \param none
  */
 void wizchip_reset(void);
 
 /*! \brief Initialize WIZchip
  *  \ingroup w5x00_spi
- * Set callback function to read/write byte using SPI.
- * Set callback function for WIZchip select/deselect.
- * Set memory size of W5x00 chip and monitor PHY link status.
  *
- * \param none
+ *  Set callback function to read/write byte using SPI.
+ *  Set callback function for WIZchip select/deselect.
+ *  Set memory size of W5x00 chip and monitor PHY link status.
+ *
+ *  \param none
  */
 void wizchip_initialize(void);
 
 /*! \brief Check chip version
  *  \ingroup w5x00_spi
  *
- * Get version information.
+ *  Get version information.
  *
- * \param none
+ *  \param none
  */
 void wizchip_check(void);
 
@@ -291,18 +299,18 @@ void wizchip_check(void);
 /*! \brief Initialize network
  *  \ingroup w5x00_spi
  *
- * Set network information.
+ *  Set network information.
  *
- * \param net_info network information.
+ *  \param net_info network information.
  */
 void network_initialize(wiz_NetInfo net_info);
 
 /*! \brief Print network information
  *  \ingroup w5x00_spi
  *
- * Print network information about MAC address, IP address, Subnet mask, Gateway, DHCP and DNS address.
+ *  Print network information about MAC address, IP address, Subnet mask, Gateway, DHCP and DNS address.
  *
- * \param net_info network information.
+ *  \param net_info network information.
  */
 void print_network_information(wiz_NetInfo net_info);
 ```
@@ -312,31 +320,32 @@ void print_network_information(wiz_NetInfo net_info);
 If you want to change things related to the **timer**. Also, if you use a different MCU without using the RP2040, you need to change the code in the '**RP2040-HAT-C/port/timer/**' directory. Here is information about functions.
 
 ```cpp
+/* Timer */
 /*! \brief Initialize timer callback function
- * \ingroup timer
+ *  \ingroup timer
  *
- * Add a repeating timer that is called repeatedly at the specified interval in microseconds.
+ *  Add a repeating timer that is called repeatedly at the specified interval in microseconds.
  *
- * \param callback the repeating timer callback function
+ *  \param callback the repeating timer callback function
  */
 void wizchip_1ms_timer_initialize(void (*callback)(void));
 
 /*! \brief Assign timer callback function
- * \ingroup timer
+ *  \ingroup timer
  *
- * 1ms timer callback function.
+ *  1ms timer callback function.
  *
- * \param t Information about a repeating timer
+ *  \param t Information about a repeating timer
  */
 bool wizchip_1ms_timer_callback(struct repeating_timer *t);
 
 /* Delay */
 /*! \brief Wait for the given number of milliseconds before returning
- * \ingroup timer
+ *  \ingroup timer
  *
- * This method attempts to perform a lower power sleep (using WFE) as much as possible.
+ *  This method attempts to perform a lower power sleep (using WFE) as much as possible.
  *
- * \param ms the number of milliseconds to sleep
+ *  \param ms the number of milliseconds to sleep
  */
 void wizchip_delay_ms(uint32_t ms);
 ```
