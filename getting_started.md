@@ -13,7 +13,7 @@ These sections will guide you through a series of steps from configuring develop
 <a name="development_environment_configuration"></a>
 ## Development environment configuration
 
-To test the ethernet examples, the development environment must be configured to use Raspberry Pi Pico.
+To test the ethernet examples, the development environment must be configured to use Raspberry Pi Pico or W5100S-EVB-Pico.
 
 The ethernet examples were tested by configuring the development environment for **Windows**. Please refer to the '**9.2. Building on MS Windows**' section of '**Getting started with Raspberry Pi Pico**' document below and configure accordingly.
 
@@ -89,7 +89,7 @@ The structure of this **RP2040-HAT-C 2.0.0** version has changed a lot compared 
 
 
 
-<a name="Ethernet_example_testing"></a>
+<a name="ethernet_example_testing"></a>
 ## Ethernet example testing
 
 1. Download
@@ -356,7 +356,6 @@ void wizchip_delay_ms(uint32_t ms);
 Link
 -->
 
-[link-cmake_configure]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/cmake_configure.png
 [link-getting_started_with_raspberry_pi_pico]: https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf
 [link-w5100s]: https://docs.wiznet.io/Product/iEthernet/W5100S/overview
 [link-rp2040]: https://www.raspberrypi.org/products/rp2040/
@@ -384,6 +383,6 @@ Link
 [link-pico_sdk]: https://github.com/raspberrypi/pico-sdk
 [link-pico_extras]: https://github.com/raspberrypi/pico-extras
 [link-port_iolibrary_driver]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/port/ioLibrary_Driver
-[link-port_mbedtls]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/port/mbedtls/inc
+[link-port_mbedtls]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/port/mbedtls
 [link-port_timer]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/port/timer
 [link-rp2040_hat_c_1_0_0_version]: https://github.com/Wiznet/RP2040-HAT-C/tree/3e60654e71f9afdd586c3368f8994dc03c6274e4

@@ -241,6 +241,7 @@ static void set_clock_khz(void)
     );
 }
 
+/* SSL */
 static int wizchip_ssl_init(uint8_t *socket_fd)
 {
     int retval;
