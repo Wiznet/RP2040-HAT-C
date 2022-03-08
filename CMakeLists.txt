@@ -7,15 +7,6 @@ if(NOT DEFINED PICO_SDK_PATH)
     message(STATUS "PICO_SDK_PATH = ${PICO_SDK_PATH}")
 endif()
 
-# Set ethernet chip
-set(WIZCHIP_NAME W5100S)
-
-if(NOT DEFINED WIZCHIP_NAME)
-    message(STATUS "must set ethernet chip")
-else()
-    message(STATUS "WIZCHIP = ${WIZCHIP_NAME}")
-endif()
-
 include(rp2040_hat_c-patch.cmake)
 include(pico_sdk_import.cmake)
 include(rp2040_hat_c_sdk_version.cmake)
@@ -32,6 +23,19 @@ set(CMAKE_CXX_STANDARD 17)
 # Initialize the SDK
 pico_sdk_init()
 
+
+set(WIZNET_CHIP W5100S)
+#set(WIZNET_CHIP W5500)
+
+if(${WIZNET_CHIP} STREQUAL W5100S)
+    add_definitions(-D_WIZCHIP_=W5100S)
+elseif(${WIZNET_CHIP} STREQUAL W5500)
+    add_definitions(-D_WIZCHIP_=W5500)
+else()
+    message(FATAL_ERROR "WIZNET_CHIP is wrong = ${WIZNET_CHIP}")
+endif()
+
+message(STATUS "WIZNET_CHIP = ${WIZNET_CHIP}")
 # Set the project root directory if it's not already defined, as may happen if
 # the tests folder is included directly by a parent project, without including
 # the top level CMakeLists.txt.
@@ -40,9 +44,9 @@ if(NOT DEFINED WIZNET_DIR)
     message(STATUS "WIZNET_DIR = ${WIZNET_DIR}")
 endif()
 
-if(NOT DEFINED MBEDTLS_LIB_DIR)
-    set(MBEDTLS_LIB_DIR ${CMAKE_SOURCE_DIR}/libraries/mbedtls)
-    message(STATUS "MBEDTLS_LIB_DIR = ${MBEDTLS_LIB_DIR}")
+if(NOT DEFINED MBEDTLS_DIR)
+    set(MBEDTLS_DIR ${CMAKE_SOURCE_DIR}/libraries/mbedtls)
+    message(STATUS "MBEDTLS_DIR = ${MBEDTLS_DIR}")
 endif()
 
 if(NOT DEFINED PORT_DIR)
@@ -61,7 +65,7 @@ add_subdirectory(examples)
 
 # Add libraries in subdirectories
 add_subdirectory(${CMAKE_SOURCE_DIR}/libraries)
-add_subdirectory(${MBEDTLS_LIB_DIR})
+add_subdirectory(${MBEDTLS_DIR})
 add_subdirectory(${PORT_DIR})
 
 # Set compile options

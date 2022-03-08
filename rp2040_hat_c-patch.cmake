@@ -65,20 +65,6 @@ execute_process(COMMAND ${GIT_EXECUTABLE} -C ${PICO_SDK_SRC_DIR} submodule updat
 # ioLibrary_Driver patch
 message("submodules ioLibrary_Driver initialised")
 
-if(${WIZCHIP_NAME} STREQUAL "W5100")
-file(GLOB IOLIBRARY_DRIVER_PATCHES 
-#	"${RP2040_HAT_C_PATCH_DIR}/01_iolibrary_driver_ethernet_chip.patch"
-	"${RP2040_HAT_C_PATCH_DIR}/02_iolibrary_driver_ftp_client.patch"
-	)
-
-foreach(IOLIBRARY_DRIVER_PATCH IN LISTS IOLIBRARY_DRIVER_PATCHES)
-	message("Running patch ${IOLIBRARY_DRIVER_PATCH}")
-	execute_process(
-		COMMAND ${GIT_EXECUTABLE} apply ${IOLIBRARY_DRIVER_PATCH}
-		WORKING_DIRECTORY ${IOLIBRARY_DRIVER_SRC_DIR}
-	)
-endforeach()
-elseif(${WIZCHIP_NAME} STREQUAL "W5100S")
 file(GLOB IOLIBRARY_DRIVER_PATCHES 
 	"${RP2040_HAT_C_PATCH_DIR}/01_iolibrary_driver_ethernet_chip.patch" 
 	"${RP2040_HAT_C_PATCH_DIR}/02_iolibrary_driver_ftp_client.patch"
@@ -91,43 +77,3 @@ foreach(IOLIBRARY_DRIVER_PATCH IN LISTS IOLIBRARY_DRIVER_PATCHES)
 		WORKING_DIRECTORY ${IOLIBRARY_DRIVER_SRC_DIR}
 	)
 endforeach()
-elseif(${WIZCHIP_NAME} STREQUAL "W5200")
-file(GLOB IOLIBRARY_DRIVER_PATCHES 
-#	"${RP2040_HAT_C_PATCH_DIR}/01_iolibrary_driver_ethernet_chip.patch"
-	"${RP2040_HAT_C_PATCH_DIR}/02_iolibrary_driver_ftp_client.patch"
-	)
-
-foreach(IOLIBRARY_DRIVER_PATCH IN LISTS IOLIBRARY_DRIVER_PATCHES)
-	message("Running patch ${IOLIBRARY_DRIVER_PATCH}")
-	execute_process(
-		COMMAND ${GIT_EXECUTABLE} apply ${IOLIBRARY_DRIVER_PATCH}
-		WORKING_DIRECTORY ${IOLIBRARY_DRIVER_SRC_DIR}
-	)
-endforeach()
-elseif(${WIZCHIP_NAME} STREQUAL "W5300")
-file(GLOB IOLIBRARY_DRIVER_PATCHES 
-#	"${RP2040_HAT_C_PATCH_DIR}/01_iolibrary_driver_ethernet_chip.patch"
-	"${RP2040_HAT_C_PATCH_DIR}/02_iolibrary_driver_ftp_client.patch"
-	)
-
-foreach(IOLIBRARY_DRIVER_PATCH IN LISTS IOLIBRARY_DRIVER_PATCHES)
-	message("Running patch ${IOLIBRARY_DRIVER_PATCH}")
-	execute_process(
-		COMMAND ${GIT_EXECUTABLE} apply ${IOLIBRARY_DRIVER_PATCH}
-		WORKING_DIRECTORY ${IOLIBRARY_DRIVER_SRC_DIR}
-	)
-endforeach()
-elseif(${WIZCHIP_NAME} STREQUAL "W5500")
-file(GLOB IOLIBRARY_DRIVER_PATCHES 
-#	"${RP2040_HAT_C_PATCH_DIR}/01_iolibrary_driver_ethernet_chip.patch"
-	"${RP2040_HAT_C_PATCH_DIR}/02_iolibrary_driver_ftp_client.patch"
-	)
-
-foreach(IOLIBRARY_DRIVER_PATCH IN LISTS IOLIBRARY_DRIVER_PATCHES)
-	message("Running patch ${IOLIBRARY_DRIVER_PATCH}")
-	execute_process(
-		COMMAND ${GIT_EXECUTABLE} apply ${IOLIBRARY_DRIVER_PATCH}
-		WORKING_DIRECTORY ${IOLIBRARY_DRIVER_SRC_DIR}
-	)
-endforeach()
-endif()

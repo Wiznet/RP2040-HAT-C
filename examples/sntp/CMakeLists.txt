@@ -9,7 +9,7 @@ target_link_libraries(${TARGET_NAME} PUBLIC
         hardware_spi
         hardware_dma
         ETHERNET_FILES
-        SPI_FILES
+        IOLIBRARY_FILES
         SNTP_FILES
         TIMER_FILES
         )

@@ -1,17 +1,18 @@
 # ioLibrary_Driver
-add_library(SPI_FILES STATIC)
+add_library(IOLIBRARY_FILES STATIC)
 
-target_sources(SPI_FILES PUBLIC
-        ${PORT_DIR}/ioLibrary_Driver/w5x00_spi.c
+target_sources(IOLIBRARY_FILES PUBLIC
+        ${PORT_DIR}/ioLibrary_Driver/src/w5x00_spi.c
+        ${PORT_DIR}/ioLibrary_Driver/src/w5x00_gpio_irq.c
         )
 
-target_include_directories(SPI_FILES PUBLIC
+target_include_directories(IOLIBRARY_FILES PUBLIC
         ${WIZNET_DIR}/Ethernet
-        ${PORT_DIR}/ioLibrary_Driver
+        ${PORT_DIR}/ioLibrary_Driver/inc
         ${PORT_DIR}
         )
 
-target_link_libraries(SPI_FILES PRIVATE
+target_link_libraries(IOLIBRARY_FILES PRIVATE
         pico_stdlib
         hardware_spi
         hardware_dma

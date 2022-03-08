@@ -6,71 +6,30 @@ target_sources(ETHERNET_FILES PUBLIC
         ${WIZNET_DIR}/Ethernet/wizchip_conf.c
         )
 
-if(${WIZCHIP_NAME} STREQUAL "W5100")
-target_include_directories(ETHERNET_FILES INTERFACE
-        ${WIZNET_DIR}/Ethernet
-        ${WIZNET_DIR}/Ethernet/W5100
-        )
-elseif(${WIZCHIP_NAME} STREQUAL "W5100S")
+message(STATUS "Libraries WIZNET_CHIP = ${WIZNET_CHIP}")
+
+if(${WIZNET_CHIP} STREQUAL W5100S)
 target_include_directories(ETHERNET_FILES INTERFACE
         ${WIZNET_DIR}/Ethernet
         ${WIZNET_DIR}/Ethernet/W5100S
         )
-elseif(${WIZCHIP_NAME} STREQUAL "W5200")
-target_include_directories(ETHERNET_FILES INTERFACE
-        ${WIZNET_DIR}/Ethernet
-        ${WIZNET_DIR}/Ethernet/W5200
+
+target_link_libraries(ETHERNET_FILES PUBLIC
+        W5100S_FILES
         )
-elseif(${WIZCHIP_NAME} STREQUAL "W5300")
-target_include_directories(ETHERNET_FILES INTERFACE
-        ${WIZNET_DIR}/Ethernet
-        ${WIZNET_DIR}/Ethernet/W5300
-        )
-elseif(${WIZCHIP_NAME} STREQUAL "W5500")
+elseif(${WIZNET_CHIP} STREQUAL W5500)
 target_include_directories(ETHERNET_FILES INTERFACE
         ${WIZNET_DIR}/Ethernet
         ${WIZNET_DIR}/Ethernet/W5500
         )
-endif()
 
-if(${WIZCHIP_NAME} STREQUAL "W5100")
-target_link_libraries(ETHERNET_FILES PUBLIC
-        W5100_FILES
-        )
-elseif(${WIZCHIP_NAME} STREQUAL "W5100S")
-target_link_libraries(ETHERNET_FILES PUBLIC
-        W5100S_FILES
-        )
-elseif(${WIZCHIP_NAME} STREQUAL "W5200")
-target_link_libraries(ETHERNET_FILES PUBLIC
-        W5200_FILES
-        )
-elseif(${WIZCHIP_NAME} STREQUAL "W5300")
-target_link_libraries(ETHERNET_FILES PUBLIC
-        W5300_FILES
-        )
-elseif(${WIZCHIP_NAME} STREQUAL "W5500")
 target_link_libraries(ETHERNET_FILES PUBLIC
         W5500_FILES
         )
 endif()
 
-if(${WIZCHIP_NAME} STREQUAL "W5100")
-add_library(W5100_FILES STATIC)
-
-target_sources(W5100_FILES PUBLIC
-        ${WIZNET_DIR}/Ethernet/W5100/w5100.c
-        )
-
-target_include_directories(W5100_FILES INTERFACE
-        ${WIZNET_DIR}/Ethernet
-        ${WIZNET_DIR}/Ethernet/W5100
-        )
-
- target_link_libraries(W5100_FILES PRIVATE
-        ETHERNET_FILES
-        )
-elseif(${WIZCHIP_NAME} STREQUAL "W5100S")
+# W5100S
+if(${WIZNET_CHIP} STREQUAL W5100S)
 add_library(W5100S_FILES STATIC)
 
 target_sources(W5100S_FILES PUBLIC
@@ -85,37 +44,9 @@ target_include_directories(W5100S_FILES INTERFACE
 target_link_libraries(W5100S_FILES PRIVATE
         ETHERNET_FILES
         )
-elseif(${WIZCHIP_NAME} STREQUAL "W5200")
-add_library(W5200_FILES STATIC)
 
-target_sources(W5200_FILES PUBLIC
-        ${WIZNET_DIR}/Ethernet/W5200/w5200.c
-        )
-
-target_include_directories(W5200_FILES INTERFACE
-        ${WIZNET_DIR}/Ethernet
-        ${WIZNET_DIR}/Ethernet/W5200
-        )
-
-target_link_libraries(W5200_FILES PRIVATE
-        ETHERNET_FILES
-        )
-elseif(${WIZCHIP_NAME} STREQUAL "W5300")
-add_library(W5300_FILES STATIC)
-
-target_sources(W5300_FILES PUBLIC
-        ${WIZNET_DIR}/Ethernet/W5300/w5300.c
-        )
-
-target_include_directories(W5300_FILES INTERFACE
-        ${WIZNET_DIR}/Ethernet
-        ${WIZNET_DIR}/Ethernet/W5300
-        )
-
-target_link_libraries(W5300_FILES PRIVATE
-        ETHERNET_FILES
-        )
-elseif(${WIZCHIP_NAME} STREQUAL "W5500")
+# W5500
+elseif(${WIZNET_CHIP} STREQUAL W5500)
 add_library(W5500_FILES STATIC)
 
 target_sources(W5500_FILES PUBLIC
