@@ -27,6 +27,9 @@
  * Macros
  * ----------------------------------------------------------------------------------------------------
  */
+/* Clock */
+#define PLL_SYS_KHZ (133 * 1000)
+
 /* Buffer */
 #define ETHERNET_BUF_MAX_SIZE (1024 * 2)
 
@@ -85,9 +88,6 @@ static volatile uint32_t g_msec_cnt = 0;
  * Functions
  * ----------------------------------------------------------------------------------------------------
  */
-/* Clock */
-#define PLL_SYS_KHZ (133 * 1000)
-
 /* Clock */
 static void set_clock_khz(void);
 

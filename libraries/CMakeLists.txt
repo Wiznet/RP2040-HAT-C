@@ -6,8 +6,6 @@ target_sources(ETHERNET_FILES PUBLIC
         ${WIZNET_DIR}/Ethernet/wizchip_conf.c
         )
 
-message(STATUS "Libraries WIZNET_CHIP = ${WIZNET_CHIP}")
-
 if(${WIZNET_CHIP} STREQUAL W5100S)
 target_include_directories(ETHERNET_FILES INTERFACE
         ${WIZNET_DIR}/Ethernet
@@ -28,7 +26,6 @@ target_link_libraries(ETHERNET_FILES PUBLIC
         )
 endif()
 
-# W5100S
 if(${WIZNET_CHIP} STREQUAL W5100S)
 add_library(W5100S_FILES STATIC)
 
@@ -44,8 +41,6 @@ target_include_directories(W5100S_FILES INTERFACE
 target_link_libraries(W5100S_FILES PRIVATE
         ETHERNET_FILES
         )
-
-# W5500
 elseif(${WIZNET_CHIP} STREQUAL W5500)
 add_library(W5500_FILES STATIC)
 

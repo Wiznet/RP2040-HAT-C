@@ -13,13 +13,13 @@ The following serial terminal program and SSL server are required for TCP Client
 
 ## Step 2: Prepare hardware
 
-If you are using W5100S-EVB-Pico, you can skip '1. Combine...'
+If you are using W5100S-EVB-Pico or W5500-EVB-Pico, you can skip '1. Combine...'
 
 1. Combine WIZnet Ethernet HAT with Raspberry Pi Pico.
 
-2. Connect ethernet cable to WIZnet Ethernet HAT or W5100S-EVB-Pico ethernet port.
+2. Connect ethernet cable to WIZnet Ethernet HAT, W5100S-EVB-Pico or W5500-EVB-Pico ethernet port.
 
-3. Connect Raspberry Pi Pico or W5100S-EVB-Pico to desktop or laptop using 5 pin micro USB cable.
+3. Connect Raspberry Pi Pico, W5100S-EVB-Pico or W5500-EVB-Pico to desktop or laptop using 5 pin micro USB cable.
 
 
 
@@ -93,13 +93,13 @@ In order to change SSL settings, modify 'ssl_config.h' located in the same direc
 
 ## Step 5: Upload and Run
 
-1. While pressing the BOOTSEL button of Raspberry Pi Pico or W5100S-EVB-Pico power on the board, the USB mass storage 'RPI-RP2' is automatically mounted.
+1. While pressing the BOOTSEL button of Raspberry Pi Pico, W5100S-EVB-Pico or W5500-EVB-Pico power on the board, the USB mass storage 'RPI-RP2' is automatically mounted.
 
 ![][link-raspberry_pi_pico_usb_mass_storage]
 
 2. Drag and drop 'w5x00_tcp_client_over_ssl.uf2' onto the USB mass storage device 'RPI-RP2'.
 
-3. Connect to the serial COM port of Raspberry Pi Pico or W5100S-EVB-Pico with Tera Term.
+3. Connect to the serial COM port of Raspberry Pi Pico, W5100S-EVB-Pico or W5500-EVB-Pico with Tera Term.
 
 ![][link-connect_to_serial_com_port]
 
@@ -134,13 +134,13 @@ s_server -accept 443 -cert server.crt -key server.key
 
 6. Reset your board.
 
-7. If the TCP Client over SSL example works normally on Raspberry Pi Pico or W5100S-EVB-Pico, you can see the network information of Raspberry Pi Pico or W5100S-EVB-Pico, connecting to the SSL server and sending the message.
+7. If the TCP Client over SSL example works normally on Raspberry Pi Pico, W5100S-EVB-Pico or W5500-EVB-Pico, you can see the network information of Raspberry Pi Pico, W5100S-EVB-Pico or W5500-EVB-Pico, connecting to the SSL server and sending the message.
 
 ![][link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_1]
 
 ![][link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_2]
 
-8. Once connected if you send data to the Raspberry Pi Pico or W5100S-EVB-Pico from the SSL server, you should be able to receive the sent message on Raspberry Pi Pico or W5100S-EVB-Pico.
+8. Once connected if you send data to the Raspberry Pi Pico, W5100S-EVB-Pico or W5500-EVB-Pico from the SSL server, you should be able to receive the sent message on Raspberry Pi Pico, W5100S-EVB-Pico or W5500-EVB-Pico.
 
 ![][link-receive_sent_message_1]
 
