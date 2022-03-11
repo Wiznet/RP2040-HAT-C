@@ -120,11 +120,18 @@ Setup the ethernet chip in '**CMakeLists.txt**' in '**RP2040-HAT-C/**' directory
 - W5100S-EVB-Pico : W5100S
 - W5500-EVB-Pico : W5500
 
-For example, when using WIZnet Ethernet HAT :
+For example, when using WIZnet Ethernet HAT or W5100S-EVB-Pico :
 
 ```cpp
 # Set ethernet chip
 set(WIZNET_CHIP W5100S)
+```
+
+When using W5500-EVB-Pico :
+
+```cpp
+# Set ethernet chip
+set(WIZNET_CHIP W5500)
 ```
 
 3. Patch
