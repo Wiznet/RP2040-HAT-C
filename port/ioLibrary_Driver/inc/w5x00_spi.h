@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 WIZnet Co.,Ltd
+ * Copyright (c) 2022 WIZnet Co.,Ltd
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -23,9 +23,6 @@
 
 /* Use SPI DMA */
 //#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
-
-/* Clock */
-#define PLL_SYS_KHZ (133 * 1000)
 
 /**
  * ----------------------------------------------------------------------------------------------------

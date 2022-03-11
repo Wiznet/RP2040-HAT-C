@@ -10,7 +10,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE
         hardware_dma
         hardware_clocks
         ETHERNET_FILES
-        SPI_FILES
+        IOLIBRARY_FILES
         FTPSERVER_FILES
         )
 

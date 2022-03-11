@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 WIZnet Co.,Ltd
+ * Copyright (c) 2022 WIZnet Co.,Ltd
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -194,7 +194,11 @@ void wizchip_initialize(void)
 
     /* W5x00 initialize */
     uint8_t temp;
+#if (_WIZCHIP_ == W5100S)
     uint8_t memsize[2][4] = {{2, 2, 2, 2}, {2, 2, 2, 2}};
+#elif (_WIZCHIP_ == W5500)
+    uint8_t memsize[2][8] = {{2, 2, 2, 2, 2, 2, 2, 2}, {2, 2, 2, 2, 2, 2, 2, 2}};
+#endif    
 
     if (ctlwizchip(CW_INIT_WIZCHIP, (void *)memsize) == -1)
     {
