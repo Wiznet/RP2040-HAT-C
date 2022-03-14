@@ -185,7 +185,7 @@ RP2040-HAT-C
 
 - **ioLibrary_Driver**
 
-If you want to change things related to SPI, such as the SPI port number and SPI read/write function, or GPIO port number and function related to interrupt or use a different MCU without using the RP2040, you need to change the code in the '**RP2040-HAT-C/port/ioLibrary_Driver/**' directory. Here is information about functions.
+If you want to change things related to **SPI**, such as the SPI port number and SPI read/write function, or GPIO port number and function related to **interrupt** or use a different MCU without using the RP2040, you need to change the code in the '**RP2040-HAT-C/port/ioLibrary_Driver/**' directory. Here is information about functions.
 
 ```cpp
 /* W5x00 */
