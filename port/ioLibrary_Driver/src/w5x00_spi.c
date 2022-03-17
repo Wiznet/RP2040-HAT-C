@@ -198,7 +198,7 @@ void wizchip_initialize(void)
     uint8_t memsize[2][4] = {{2, 2, 2, 2}, {2, 2, 2, 2}};
 #elif (_WIZCHIP_ == W5500)
     uint8_t memsize[2][8] = {{2, 2, 2, 2, 2, 2, 2, 2}, {2, 2, 2, 2, 2, 2, 2, 2}};
-#endif    
+#endif
 
     if (ctlwizchip(CW_INIT_WIZCHIP, (void *)memsize) == -1)
     {
