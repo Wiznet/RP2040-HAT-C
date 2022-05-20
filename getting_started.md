@@ -45,6 +45,7 @@ The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** - et
 <p align="center"><img src="https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/w5500-evb-pico_main.png"></p>
 
 
+
 <a name="ethernet_example_structure"></a>
 ## Ethernet example structure
 
