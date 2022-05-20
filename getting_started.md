@@ -30,18 +30,19 @@ The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** - et
 
 - [**Raspberry Pi Pico**][link-raspberry_pi_pico]
 
-![][link-raspberry_pi_pico_main]
+<p align="center"><img src="https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/raspberry_pi_pico_main.png"></p>
 
 - [**WIZnet Ethernet HAT**][link-wiznet_ethernet_hat]
 
-![][link-wiznet_ethernet_hat_main]
+<p align="center"><img src="https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/wiznet_ethernet_hat_main.png"></p>
 
 - [**W5100S-EVB-Pico**][link-w5100s-evb-pico]
 
-![][link-w5100s-evb-pico_main]
+<p align="center"><img src="https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/w5100s-evb-pico_main.png"></p>
 
-- **W5500-EVB-Pico**
+- [**W5500-EVB-Pico**][link-w5500-evb-pico]
 
+<p align="center"><img src="https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/w5500-evb-pico_main.png"></p>
 
 
 <a name="ethernet_example_structure"></a>
@@ -416,6 +417,8 @@ Link
 [link-wiznet_ethernet_hat_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/wiznet_ethernet_hat_main.png
 [link-w5100s-evb-pico]: https://docs.wiznet.io/Product/iEthernet/W5100S/w5100s-evb-pico
 [link-w5100s-evb-pico_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/w5100s-evb-pico_main.png
+[link-w5500-evb-pico]: https://docs.wiznet.io/Product/iEthernet/W5500/w5500-evb-pico
+[link-w5500-evb-pico_main]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/w5500-evb-pico_main.png
 [link-dhcp_dns]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/dhcp_dns
 [link-ftp]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/ftp
 [link-ftp_client]: https://github.com/Wiznet/RP2040-HAT-C/tree/main/examples/ftp/client
