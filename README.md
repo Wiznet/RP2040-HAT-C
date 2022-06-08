@@ -1,4 +1,4 @@
-Please refer to [getting_stared.md][link-getting_started] for examples usage.
+Please refer to [getting_started.md][link-getting_started] for examples usage.
 
 
 
