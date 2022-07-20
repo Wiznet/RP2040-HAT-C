@@ -7,6 +7,10 @@
 #ifndef _TIMER_H_
 #define _TIMER_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * ----------------------------------------------------------------------------------------------------
  * Macros
@@ -48,5 +52,9 @@ bool wizchip_1ms_timer_callback(struct repeating_timer *t);
  *  \param ms the number of milliseconds to sleep
  */
 void wizchip_delay_ms(uint32_t ms);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _TIMER_H_ */
