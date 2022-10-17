@@ -170,4 +170,4 @@ Link
 [link-see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_2]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/see_network_information_of_raspberry_pi_pico_connecting_to_ssl_server_and_sending_message_2.png
 [link-receive_sent_message_1]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/receive_sent_message_1.png
 [link-receive_sent_message_2]: https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/tcp_client_over_ssl/receive_sent_message_2.png
-[link-mbed_tls]: https://github.com/ARMmbed/mbedtls/tree/662deb38d61bb1fc6392c55a5134d1bd1a116118
+[link-mbed_tls]: https://github.com/Mbed-TLS/mbedtls/tree/8df2f8e7b9c7bb9390ac74bb7bace27edca81a2b
