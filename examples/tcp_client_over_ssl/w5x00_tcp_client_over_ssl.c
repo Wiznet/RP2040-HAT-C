@@ -25,7 +25,6 @@
 #include "mbedtls/error.h"
 #include "mbedtls/ssl.h"
 #include "mbedtls/ctr_drbg.h"
-#include "mbedtls/compat-1.3.h"
 
 /**
  * ----------------------------------------------------------------------------------------------------
@@ -152,7 +151,7 @@ int main()
         list++;
     }
 
-    retval = socket((uint8_t)(g_ssl.p_bio), Sn_MR_TCP, PORT_SSL, SF_TCP_NODELAY);
+    retval = socket((uint8_t)(g_ssl.private_p_bio), Sn_MR_TCP, PORT_SSL, SF_TCP_NODELAY);
 
     if (retval != SOCKET_SSL)
     {
@@ -166,7 +165,7 @@ int main()
 
     do
     {
-        retval = connect((uint8_t)(g_ssl.p_bio), g_ssl_target_ip, PORT_SSL);
+        retval = connect((uint8_t)(g_ssl.private_p_bio), g_ssl_target_ip, PORT_SSL);
 
         if ((retval == SOCK_OK) || (retval == SOCKERR_TIMEOUT))
         {
@@ -205,7 +204,7 @@ int main()
     /* Infinite loop */
     while (1)
     {
-        getsockopt((uint8_t)(g_ssl.p_bio), SO_RECVBUF, &len);
+        getsockopt((uint8_t)(g_ssl.private_p_bio), SO_RECVBUF, &len);
 
         if (len > 0)
         {
