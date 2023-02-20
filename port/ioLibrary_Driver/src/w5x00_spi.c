@@ -47,6 +47,7 @@ static inline void wizchip_deselect(void)
 
 void wizchip_reset()
 {
+    gpio_init(PIN_RST);
     gpio_set_dir(PIN_RST, GPIO_OUT);
 
     gpio_put(PIN_RST, 0);
