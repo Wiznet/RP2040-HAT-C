@@ -7,6 +7,10 @@
 #ifndef _W5X00_GPIO_IRQ_H_
 #define _W5X00_GPIO_IRQ_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * ----------------------------------------------------------------------------------------------------
  * Macros
@@ -40,5 +44,9 @@ void wizchip_gpio_interrupt_initialize(uint8_t socket, void (*callback)(void));
  *  \param events Which events caused this interrupt. See \ref gpio_set_irq_enabled for details.
  */
 static void wizchip_gpio_interrupt_callback(uint gpio, uint32_t events);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _W5X00_GPIO_IRQ_H_ */

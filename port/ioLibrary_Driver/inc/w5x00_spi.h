@@ -7,6 +7,10 @@
 #ifndef _W5X00_SPI_H_
 #define _W5X00_SPI_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * ----------------------------------------------------------------------------------------------------
  * Macros
@@ -181,5 +185,9 @@ void network_initialize(wiz_NetInfo net_info);
  *  \param net_info network information.
  */
 void print_network_information(wiz_NetInfo net_info);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* _W5X00_SPI_H_ */
