@@ -13,7 +13,7 @@ These sections will guide you through a series of steps from configuring develop
 <a name="development_environment_configuration"></a>
 ## Development environment configuration
 
-To test the ethernet examples, the development environment must be configured to use Raspberry Pi Pico, W5100S-EVB-Pico or W5500-EVB-Pico.
+To test the ethernet examples, the development environment must be configured to use Raspberry Pi Pico, W5100S-EVB-Pico, W5500-EVB-Pico or W55RP20-EVB-Pico.
 
 The ethernet examples were tested by configuring the development environment for **Windows**. Please refer to the '**9.2. Building on MS Windows**' section of '**Getting started with Raspberry Pi Pico**' document below and configure accordingly.
 
@@ -26,7 +26,7 @@ The ethernet examples were tested by configuring the development environment for
 <a name="hardware_requirements"></a>
 ## Hardware requirements
 
-The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** - ethernet I/O module built on WIZnet's [**W5100S**][link-w5100s] ethernet chip, **W5100S-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5100S**][link-w5100s] ethernet chip or **W5500-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5500**][link-w5500] ethernet chip.
+The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** - ethernet I/O module built on WIZnet's [**W5100S**][link-w5100s] ethernet chip, **W5100S-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5100S**][link-w5100s] ethernet chip or **W5500-EVB-Pico** and **W55RP20-EVB-Pico** - ethernet I/O module built on [**RP2040**][link-rp2040] and WIZnet's [**W5500**][link-w5500] ethernet chip.
 
 - [**Raspberry Pi Pico**][link-raspberry_pi_pico]
 
@@ -44,7 +44,7 @@ The ethernet examples use **Raspberry Pi Pico** and **WIZnet Ethernet HAT** - et
 
 <p align="center"><img src="https://github.com/Wiznet/RP2040-HAT-C/blob/main/static/images/getting_started/w5500-evb-pico_main.png"></p>
 
-
+- **W55RP20-EVB-Pico**
 
 <a name="ethernet_example_structure"></a>
 ## Ethernet example structure
@@ -114,26 +114,27 @@ git clone --recurse-submodules https://github.com/Wiznet/RP2040-HAT-C.git
 
 With Visual Studio Code, the library set as a submodule is automatically downloaded, so it doesn't matter whether the library set as a submodule is an empty directory or not, so refer to it.
 
-2. Setup ethetnet chip
+2. Setup board
 
-Setup the ethernet chip in '**CMakeLists.txt**' in '**RP2040-HAT-C/**' directory according to the evaluation board to be used referring to the following.
+Setup the board in '**CMakeLists.txt**' in '**RP2040-HAT-C/**' directory according to the evaluation board to be used referring to the following.
 
-- WIZnet Ethernet HAT : W5100S
-- W5100S-EVB-Pico : W5100S
-- W5500-EVB-Pico : W5500
+- WIZnet Ethernet HAT
+- W5100S-EVB-Pico
+- W5500-EVB-Pico
+- W55RP20-EVB-Pico
 
-For example, when using WIZnet Ethernet HAT or W5100S-EVB-Pico :
+For example, when using WIZnet Ethernet HAT :
 
 ```cpp
-# Set ethernet chip
-set(WIZNET_CHIP W5100S)
+# Set board
+set(BOARD_NAME WIZnet_Ethernet_HAT)
 ```
 
 When using W5500-EVB-Pico :
 
 ```cpp
-# Set ethernet chip
-set(WIZNET_CHIP W5500)
+# Set board
+set(BOARD_NAME W5500_EVB_PICO)
 ```
 
 3. Patch

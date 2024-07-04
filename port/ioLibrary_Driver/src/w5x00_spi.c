@@ -15,6 +15,28 @@
 
 #include "wizchip_conf.h"
 #include "w5x00_spi.h"
+#include "board_list.h"
+
+#if (DEVICE_BOARD_NAME == W55RP20_EVB_PICO)
+#include "hardware/pio.h"
+#include "wiznet_spi_pio.h"
+#endif
+
+/**
+ * ----------------------------------------------------------------------------------------------------
+ * Macros
+ * ----------------------------------------------------------------------------------------------------
+ */
+/* SPI */
+#if (DEVICE_BOARD_NAME == W55RP20_EVB_PICO)
+#define USE_SPI_PIO
+#else
+/* SPI */
+#define SPI_PORT spi0
+/* Use SPI DMA */
+//#define USE_SPI_DMA // if you want to use SPI DMA, uncomment.
+
+#endif
 
 /**
  * ----------------------------------------------------------------------------------------------------
@@ -28,6 +50,21 @@ static uint dma_tx;
 static uint dma_rx;
 static dma_channel_config dma_channel_config_tx;
 static dma_channel_config dma_channel_config_rx;
+#endif
+
+
+#ifdef USE_SPI_PIO
+wiznet_spi_config_t g_spi_config = {
+    .data_in_pin = PIN_MISO,
+    .data_out_pin = PIN_MOSI,
+    .cs_pin = PIN_CS,
+    .clock_pin = PIN_SCK,
+    .reset_pin = PIN_RST,
+    .clock_div_major = 2,
+    .clock_div_minor = 0,
+};
+
+wiznet_spi_handle_t spi_handle;
 #endif
 
 /**
@@ -48,7 +85,14 @@ static inline void wizchip_deselect(void)
 void wizchip_reset()
 {
     gpio_init(PIN_RST);
+
+#ifdef USE_SPI_PIO
+    gpio_pull_up(PIN_RST);
     gpio_set_dir(PIN_RST, GPIO_OUT);
+    sleep_ms(5);
+#else
+    gpio_set_dir(PIN_RST, GPIO_OUT);
+#endif
 
     gpio_put(PIN_RST, 0);
     sleep_ms(100);
@@ -59,6 +103,7 @@ void wizchip_reset()
     bi_decl(bi_1pin_with_name(PIN_RST, "W5x00 RESET"));
 }
 
+#ifndef USE_SPI_PIO
 static uint8_t wizchip_read(void)
 {
     uint8_t rx_data = 0;
@@ -123,6 +168,7 @@ static void wizchip_write_burst(uint8_t *pBuf, uint16_t len)
     dma_channel_wait_for_finish_blocking(dma_rx);
 }
 #endif
+#endif
 
 static void wizchip_critical_section_lock(void)
 {
@@ -136,6 +182,11 @@ static void wizchip_critical_section_unlock(void)
 
 void wizchip_spi_initialize(void)
 {
+#ifdef USE_SPI_PIO
+    spi_handle = wiznet_spi_pio_open(&g_spi_config);
+    (*spi_handle)->set_active(spi_handle);
+
+#else
     // this example will use SPI0 at 5MHz
     spi_init(SPI_PORT, 5000 * 1000);
 
@@ -171,6 +222,7 @@ void wizchip_spi_initialize(void)
     channel_config_set_read_increment(&dma_channel_config_rx, false);
     channel_config_set_write_increment(&dma_channel_config_rx, true);
 #endif
+#endif
 }
 
 void wizchip_cris_initialize(void)
@@ -181,6 +233,15 @@ void wizchip_cris_initialize(void)
 
 void wizchip_initialize(void)
 {
+
+#ifdef USE_SPI_PIO
+    (*spi_handle)->frame_end();
+
+    reg_wizchip_spi_cbfunc((*spi_handle)->read_byte, (*spi_handle)->write_byte);
+    reg_wizchip_spiburst_cbfunc((*spi_handle)->read_buffer, (*spi_handle)->write_buffer);
+    reg_wizchip_cs_cbfunc((*spi_handle)->frame_start, (*spi_handle)->frame_end);
+#else
+
     /* Deselect the FLASH : chip select high */
     wizchip_deselect();
 
@@ -189,6 +250,7 @@ void wizchip_initialize(void)
 
     /* SPI function register */
     reg_wizchip_spi_cbfunc(wizchip_read, wizchip_write);
+#endif
 #ifdef USE_SPI_DMA
     reg_wizchip_spiburst_cbfunc(wizchip_read_burst, wizchip_write_burst);
 #endif
