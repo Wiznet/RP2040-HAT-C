@@ -404,7 +404,6 @@ static void wiznet_spi_pio_read_buffer(uint8_t* pBuf, uint16_t len) {
 static void wiznet_spi_pio_write_buffer(uint8_t* pBuf, uint16_t len) {
     assert(active_state);
     if (len == SPI_HEADER_LEN && active_state->spi_header_count == 0) {
-        assert(pBuf[0] == WIZNET_CONTROL_READ || pBuf[0] == WIZNET_CONTROL_WRITE); // read or write command
         memcpy(active_state->spi_header, pBuf, SPI_HEADER_LEN); // expect another call
         active_state->spi_header_count = SPI_HEADER_LEN;
     } else {
